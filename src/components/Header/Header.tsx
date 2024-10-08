@@ -156,7 +156,7 @@ const Header: React.FC = () => {
 							<img src={email} alt='email-icon' />
 							<a href='mailto:Mr.Driskell@gmail.com'>Mr.Driskell@gmail.com</a>
 						</div>
-						<Link to='/react-tattoo-shop' className={style.logo}>
+						<Link to='/react-tattoo-store' className={style.logo}>
 							<span className={style.logo__name}>mr. driskell</span>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -174,7 +174,7 @@ const Header: React.FC = () => {
 						</Link>
 					</div>
 					<div className={style.right}>
-						<Link className={style.shop__bin} to='/react-tattoo-shop/cart'>
+						<Link className={style.shop__bin} to='/react-tattoo-store/cart'>
 							<span>{totalPrice}₴</span>
 							<img src={shop_bin} alt='shop bin' />
 							<span className={style.bin__number}>
@@ -237,7 +237,7 @@ const Header: React.FC = () => {
 													{catalog.map((catalogItem, catalogIndex) => (
 														<Link
 															onClick={() => setOpenMenu(false)}
-															to={`/react-tattoo-shop/catalog/${catalogIndex}`}
+															to={`/react-tattoo-store/catalog/${catalogIndex}`}
 														>
 															<li key={catalogIndex}>{catalogItem}</li>
 														</Link>
@@ -311,7 +311,7 @@ const Header: React.FC = () => {
 											onClick={() => setExpandCatalog(false)}
 											key={catalogValue}
 										>
-											<Link to={`/react-tattoo-shop/catalog/${index}`}>
+											<Link to={`/react-tattoo-store/catalog/${index}`}>
 												{catalogValue}
 											</Link>
 										</li>

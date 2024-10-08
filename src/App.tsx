@@ -30,9 +30,9 @@ const App: React.FC = () => {
         <main className="main">
           <Routes>
             <Route path="*" element={<PageNotFound/>} />
-            <Route path="/react-tattoo-shop" element={<Home/>} />
-            <Route path="/react-tattoo-shop/cart" element={<Cart/>} />
-            <Route path="/react-tattoo-shop/catalog/:id" element={<CatalogFrame/>} />
+            <Route path="/react-tattoo-store" element={<Home/>} />
+            <Route path="/react-tattoo-store/cart" element={<Cart/>} />
+            <Route path="/react-tattoo-store/catalog/:id" element={<CatalogFrame/>} />
           </Routes>
         </main>
           <Footer/>
@@ -44,7 +44,7 @@ const App: React.FC = () => {
                   <img className={style.popup__image} src={modalImage} alt="tattoo machine" />
                  
                   <div className={style.popup__buttons}>
-                    <Link onClick={() => dispatch(setModal(false))} to="/react-tattoo-shop/cart">Оформити замовлення</Link>
+                    <Link onClick={() => dispatch(setModal(false))} to="/react-tattoo-store/cart">Оформити замовлення</Link>
                     <button onClick={() => dispatch(setModal(false))}>Продовжити покупки</button>
                   </div>
                   <svg

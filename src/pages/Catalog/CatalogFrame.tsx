@@ -68,9 +68,9 @@ const CatalogFrame: React.FC = () => {
     return (  
         <div className={style.wrapper}>
             <div className={style.path}>
-                <Link to="/react-tattoo-shop">Головна</Link> / 
+                <Link to="/react-tattoo-store">Головна</Link> / 
                 <span> Каталог</span> /
-                <Link to={`/react-tattoo-shop/catalog/${id}`}>{catalog && catalog.description}</Link>
+                <Link to={`/react-tattoo-store/catalog/${id}`}>{catalog && catalog.description}</Link>
             </div>
             <h5 className={style.title}>{catalog && catalog.description}</h5>
             <div className={style.filterButtons}>

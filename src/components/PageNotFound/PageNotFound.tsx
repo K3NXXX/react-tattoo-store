@@ -15,8 +15,8 @@ const PageNotFound: React.FC = () => {
                 <p>Помилка 404!</p>
                 <p>Ця сторінка не знайдена, ми вже працюємо, щоб її відновити!</p>
                 <div className={style.buttons}>
-                    <Link to="/react-tattoo-shop">Вернутися на головну</Link>
-                    <Link to="/react-tattoo-shop/catalog/2">Вернутися в каталог</Link>
+                    <Link to="/react-tattoo-store">Вернутися на головну</Link>
+                    <Link to="/react-tattoo-store/catalog/2">Вернутися в каталог</Link>
                 </div>
             </div>
             <div className={style.left}>

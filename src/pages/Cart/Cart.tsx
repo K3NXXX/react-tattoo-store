@@ -31,8 +31,8 @@ const Cart: React.FC = () => {
   return (
     <section className={style.wrapper}>
       <div className={style.path}>
-        <Link to="/react-tattoo-shop">Головна</Link> /
-        <Link to={`/react-tattoo-shop/cart`}> Корзина</Link>
+        <Link to="/react-tattoo-store">Головна</Link> /
+        <Link to={`/react-tattoo-store/cart`}> Корзина</Link>
       </div>
       <h5 className={style.title}>Корзина</h5>
       <div className={style.content}>
@@ -50,7 +50,7 @@ const Cart: React.FC = () => {
             <span className={style.right__number}>{totalPrice}₴</span>
           </div>
           <Link
-            to="/react-tattoo-shop/catalog/0"
+            to="/react-tattoo-store/catalog/0"
             className={style.backToCatalog}
           >
             Вернутися в каталог
@@ -70,8 +70,8 @@ const Cart: React.FC = () => {
               деталей замовлення
             </p>
             <div className={style.popup__buttons}>
-              <Link to="/react-tattoo-shop">Вернутися на головну</Link>
-              <Link to="/react-tattoo-shop/catalog/2">Вернутися в каталог</Link>
+              <Link to="/react-tattoo-store">Вернутися на головну</Link>
+              <Link to="/react-tattoo-store/catalog/2">Вернутися в каталог</Link>
             </div>
             <svg
               onClick={() => dispatch(setSuccessData(false))}
