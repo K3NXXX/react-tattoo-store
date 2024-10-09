@@ -13,7 +13,6 @@ import axios from "axios";
 import "../scss/global.module.scss"
 
 const Home: React.FC = () => {
-    // Отримую вибрану категорію з Category---------------
     const activeCategory = useSelector((state: RootState) => state.categorySlice.activeCategory)
     const dispatch = useDispatch()
     useEffect(() => {

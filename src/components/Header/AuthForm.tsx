@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
-import popupClose from "../../assets/img/Header/popupClose.svg"
 import style from "./Header.module.scss"
 import { setIsAuthFormOpened } from '../../redux/slices/globalSlice'
+import { IoCloseOutline } from "react-icons/io5";
 
 export type Data = {
     email: string;    
@@ -22,7 +22,7 @@ const AuthForm: React.FC = () => {
     return (  
 		<div  className={ style.popup_bg }>
                    <div className={style.popup}>
-                       <img onClick={() => dispatch(setIsAuthFormOpened(false))}  src={popupClose} alt="popupClose" />
+                       <IoCloseOutline size={30} className={style.close} onClick={() => dispatch(setIsAuthFormOpened(false))}/>
                          <div className={style.choose}>
                              <span>Реєстрація</span>
                          </div>
