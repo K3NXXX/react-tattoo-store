@@ -11,6 +11,8 @@ import CatalogFrame from './pages/Catalog/CatalogFrame'
 import Home from './pages/Home'
 import { setModal } from './redux/slices/categorySlice'
 import { RootState } from './redux/store'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App: React.FC = () => {
 	const modal = useSelector((state: RootState) => state.categorySlice.modal)
@@ -36,8 +38,8 @@ const App: React.FC = () => {
 				</Routes>
 			</main>
 			<Footer />
-
 			{modal && <PurchaseModal />}
+      <ToastContainer position='bottom-right'/>
 		</div>
 	)
 }
