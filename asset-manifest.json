@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-tattoo-store/static/css/main.c4360fc7.css",
-    "main.js": "/react-tattoo-store/static/js/main.5a1c0797.js",
+    "main.css": "/react-tattoo-store/static/css/main.f1dfeb97.css",
+    "main.js": "/react-tattoo-store/static/js/main.125393fc.js",
     "static/media/intro-bg1.png": "/react-tattoo-store/static/media/intro-bg1.997741a18dac7d5563f9.png",
     "static/media/1.png": "/react-tattoo-store/static/media/1.aa185cc82bf70713ffa4.png",
     "static/media/catalog12.png": "/react-tattoo-store/static/media/catalog12.ba97cbb423382fdeff9c.png",
@@ -35,7 +35,6 @@
     "static/media/viber2-icon.svg": "/react-tattoo-store/static/media/viber2-icon.d6dc46d920d998462aaffc950f5d66ce.svg",
     "index.html": "/react-tattoo-store/index.html",
     "static/media/cross.svg": "/react-tattoo-store/static/media/cross.53b6c1aa73493b2cb16509bb28ac4dad.svg",
-    "static/media/popupClose.svg": "/react-tattoo-store/static/media/popupClose.359021e54952399ba141cb48fb1ca831.svg",
     "static/media/phone-icon.svg": "/react-tattoo-store/static/media/phone-icon.db54c264fcf34ffa1221c35ee289d651.svg",
     "static/media/intro-slider-btn2.svg": "/react-tattoo-store/static/media/intro-slider-btn2.74bbcc10a08f20426be17d0ef60e0ea3.svg",
     "static/media/intro-slider-btn.svg": "/react-tattoo-store/static/media/intro-slider-btn.659d2321298620e4a7f5725ae4eda2c0.svg",
@@ -53,11 +52,11 @@
     "static/media/new.svg": "/react-tattoo-store/static/media/new.0491a84bf08ca0971d77.svg",
     "static/media/arrow-icon.svg": "/react-tattoo-store/static/media/arrow-icon.4e1f136b3a6945120bfef17c41321a11.svg",
     "static/media/hover-line.svg": "/react-tattoo-store/static/media/hover-line.ba97532bd464ba4a856f.svg",
-    "main.c4360fc7.css.map": "/react-tattoo-store/static/css/main.c4360fc7.css.map",
-    "main.5a1c0797.js.map": "/react-tattoo-store/static/js/main.5a1c0797.js.map"
+    "main.f1dfeb97.css.map": "/react-tattoo-store/static/css/main.f1dfeb97.css.map",
+    "main.125393fc.js.map": "/react-tattoo-store/static/js/main.125393fc.js.map"
   },
   "entrypoints": [
-    "static/css/main.c4360fc7.css",
-    "static/js/main.5a1c0797.js"
+    "static/css/main.f1dfeb97.css",
+    "static/js/main.125393fc.js"
   ]
 }
