@@ -1,10 +1,10 @@
 import { FieldErrors } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import { IRegisterForm } from '../../types/register-form-type'
+import { IAuthForm } from '../../types/register-form-type'
 import styles from './Header.module.scss'
 
 interface RegisterErrorsProps {
-	errors: FieldErrors<IRegisterForm>
+	errors: FieldErrors<IAuthForm>
 }
 
 export function RegisterErrors({ errors }: RegisterErrorsProps) {

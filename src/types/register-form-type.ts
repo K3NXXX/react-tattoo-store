@@ -1,4 +1,4 @@
-export interface IRegisterForm {
+export interface IAuthForm {
 	email: string
 	name: string
     surname: string
