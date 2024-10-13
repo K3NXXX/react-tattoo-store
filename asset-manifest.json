@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-tattoo-store/static/css/main.f1dfeb97.css",
-    "main.js": "/react-tattoo-store/static/js/main.125393fc.js",
+    "main.css": "/react-tattoo-store/static/css/main.b9461f12.css",
+    "main.js": "/react-tattoo-store/static/js/main.46188da7.js",
     "static/media/intro-bg1.png": "/react-tattoo-store/static/media/intro-bg1.997741a18dac7d5563f9.png",
     "static/media/1.png": "/react-tattoo-store/static/media/1.aa185cc82bf70713ffa4.png",
     "static/media/catalog12.png": "/react-tattoo-store/static/media/catalog12.ba97cbb423382fdeff9c.png",
@@ -28,6 +28,7 @@
     "static/media/catalogPhone3.png": "/react-tattoo-store/static/media/catalogPhone3.1e54fc4b84de88f7d26e.png",
     "static/media/catalogPhone2.png": "/react-tattoo-store/static/media/catalogPhone2.6b16d4d2ffb964f23833.png",
     "static/media/catalog15.png": "/react-tattoo-store/static/media/catalog15.9b55ee41be09649435fb.png",
+    "static/media/noAvatar.webp": "/react-tattoo-store/static/media/noAvatar.7a6a6c54279a54d1977c.webp",
     "static/media/avatar1.png": "/react-tattoo-store/static/media/avatar1.3ddb8fd3dd1990e13057.png",
     "static/media/favourite-icon.svg": "/react-tattoo-store/static/media/favourite-icon.027a96b1a3059c1fbdf7902f999474ae.svg",
     "static/media/viber-icon.svg": "/react-tattoo-store/static/media/viber-icon.ecebec753cfcb4f83c7a5999b82b0f95.svg",
@@ -52,11 +53,11 @@
     "static/media/new.svg": "/react-tattoo-store/static/media/new.0491a84bf08ca0971d77.svg",
     "static/media/arrow-icon.svg": "/react-tattoo-store/static/media/arrow-icon.4e1f136b3a6945120bfef17c41321a11.svg",
     "static/media/hover-line.svg": "/react-tattoo-store/static/media/hover-line.ba97532bd464ba4a856f.svg",
-    "main.f1dfeb97.css.map": "/react-tattoo-store/static/css/main.f1dfeb97.css.map",
-    "main.125393fc.js.map": "/react-tattoo-store/static/js/main.125393fc.js.map"
+    "main.b9461f12.css.map": "/react-tattoo-store/static/css/main.b9461f12.css.map",
+    "main.46188da7.js.map": "/react-tattoo-store/static/js/main.46188da7.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1dfeb97.css",
-    "static/js/main.125393fc.js"
+    "static/css/main.b9461f12.css",
+    "static/js/main.46188da7.js"
   ]
 }
