@@ -22,7 +22,24 @@
         }
         
     }
-    .form__top {
+    .form__top, .form__bottom {
+        .receiver__info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 800px;
+          
+            .receiver__info_btn {
+                background: none !important;
+                color: rgb(187, 140, 95);
+                width: 100px;
+                height: none;
+                transition: 0.3s ease;
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
         .top__row {
             display: grid;
             grid-template-columns: 289px 186px 289px;

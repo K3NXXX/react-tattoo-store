@@ -1,5 +1,5 @@
 import CartGoods from "./CartGoods/CartGoods";
-import UsersData from "./UsersData/UsersData";
+import ReceiverData from "./UsersData/ReceiverData";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { CartItemType, setSuccessData } from "../../redux/slices/cartSlice";
@@ -38,7 +38,7 @@ const Cart: React.FC = () => {
       <div className={style.content}>
         <div className={style.left}>
           <CartGoods />
-          <UsersData />
+          <ReceiverData isAccount={false}/>
         </div>
         <div className={style.right}>
           <div>

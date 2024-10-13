@@ -15,6 +15,7 @@ const HeaderTop: React.FC = () => {
 	let [openMenu, setOpenMenu] = useState<boolean>(false)
 	const dispatch = useDispatch()
 	const isMounted = useRef(false)
+	const jwtToken = localStorage.getItem('jwt')
 
 	const { items, totalPrice } = useSelector(
 		(state: RootState) => state.cartSlice
@@ -138,12 +139,23 @@ const HeaderTop: React.FC = () => {
 					<a className={style.header__favLink} href=''>
 						<img src={favourite} alt='favourite' />
 					</a>
-					<img
-						onClick={() => dispatch(setIsAuthFormOpened(true))}
-						className={style.accountImg}
-						src={account}
-						alt='account'
-					/>
+					{jwtToken ? (
+						<Link to="/react-tattoo-store/account"
+						>
+							<img
+								className={style.accountImg}
+								src={account}
+								alt='account'
+							/>
+						</Link>
+					) : (
+						<img
+							onClick={() => dispatch(setIsAuthFormOpened(true))}
+							className={style.accountImg}
+							src={account}
+							alt='account'
+						/>
+					)}
 				</div>
 			</div>
 			<svg

@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { IAuthForm } from '../types/register-form-type'
+import axios from '../utils/axios'
 
 class AuthService {
 	private BASE_URL = 'https://tattoo-shop-801cb78430a8.herokuapp.com/'
@@ -9,7 +9,9 @@ class AuthService {
 			`${this.BASE_URL}auth/signup`,
 			formData
 		)
-		console.log('register data', data)
+		if (data.token) {
+			window.localStorage.setItem('jwt', data.token)
+		}
 		return data
 	}
 
@@ -18,7 +20,22 @@ class AuthService {
 			`${this.BASE_URL}auth/login`,
 			formData
 		)
+		console.log('logindata', data)
+		if (data.token) {
+			window.localStorage.setItem('jwt', data.token)
+		}
 		return data
+	}
+
+	async getMe() {
+		try {
+			const { data } = await axios.get(`auth/me`);
+			console.log('getMe', data);
+			return data;
+		} catch (error) {
+			console.error('Error fetching user data:', error);
+			throw error;
+		}
 	}
 }
 

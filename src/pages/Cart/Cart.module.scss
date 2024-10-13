@@ -44,6 +44,7 @@
     display: grid;
     grid-template-columns: 804px 392px;
     justify-content: space-between;
+    gap: 26px;
     @media (max-width:1270px) {
     grid-template-columns: 1fr;
     justify-content: center;

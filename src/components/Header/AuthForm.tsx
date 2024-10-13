@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { IoArrowDownCircle, IoCloseOutline } from 'react-icons/io5'
@@ -11,6 +11,7 @@ import style from './Header.module.scss'
 import { RegisterErrors } from './RegisterErrors'
 
 const AuthForm: React.FC = () => {
+	const queryClient = useQueryClient()
 	const dispatch = useDispatch()
 	const [activeAuthWay, setActiveAuthWay] = useState('register')
 	const [authWay, setAuthWay] = useState('register')
@@ -37,10 +38,11 @@ const AuthForm: React.FC = () => {
 	const { mutate: loginMutate } = useMutation({
 		mutationKey: ['login'],
 		mutationFn: (data: IAuthForm) => authService.login(data),
-		onSuccess() {
+		onSuccess(data) {
 			toast.success('Авторизація пройшла успішно')
 			dispatch(setIsAuthFormOpened(false))
 			reset()
+			queryClient.setQueryData(['user'], data)
 		},
 		onError(error: any) {
 			toast.error(error.response.data.error)
@@ -134,7 +136,7 @@ const AuthForm: React.FC = () => {
 								{...register('password', {
 									required: true,
 									minLength: {
-										value: 10,
+										value: 8,
 										message: 'Пароль повинен містити мінімум 10 символів',
 									},
 									pattern: {
@@ -199,7 +201,7 @@ const AuthForm: React.FC = () => {
 								{...register('password', {
 									required: true,
 									minLength: {
-										value: 10,
+										value: 8,
 										message: 'Пароль повинен містити мінімум 10 символів',
 									},
 									pattern: {
