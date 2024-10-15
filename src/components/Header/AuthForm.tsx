@@ -1,5 +1,5 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { IoArrowDownCircle, IoCloseOutline } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
@@ -9,7 +9,6 @@ import { authService } from '../../services/auth.service'
 import { IAuthForm } from '../../types/auth.type'
 import style from './Header.module.scss'
 import { RegisterErrors } from './RegisterErrors'
-import { setUserData } from '../../redux/slices/authSlice'
 
 const AuthForm: React.FC = () => {
 	const dispatch = useDispatch()

@@ -30,7 +30,6 @@ class AuthService {
 	async getMe() {
 		try {
 			const { data } = await axios.get(`auth/me`)
-			console.log('getMe', data)
 			return data
 		} catch (error) {
 			console.error('Error fetching user data:', error)
