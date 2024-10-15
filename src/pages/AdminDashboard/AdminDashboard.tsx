@@ -50,7 +50,6 @@ const AdminDashboard: React.FC = () => {
 										type='text'
 									/>
 								</div>
-
 								<div className={style.formItem}>
 										<input
 											{...register("description")}
@@ -58,7 +57,6 @@ const AdminDashboard: React.FC = () => {
 											type='text'
 										/>
 								</div>
-
 								<div className={style.formItem}>
 										<input
 											{...register("price")}
@@ -66,7 +64,6 @@ const AdminDashboard: React.FC = () => {
 											type='number'
 										/>
 								</div>
-
 								<div className={style.formItem}>
 										<input
 											{...register("category")}
@@ -74,7 +71,6 @@ const AdminDashboard: React.FC = () => {
 											type='text'
 										/>
 								</div>
-
 								<div className={style.formItem}>
 										<input
 											{...register("image")}
@@ -82,7 +78,6 @@ const AdminDashboard: React.FC = () => {
 											type='text'
 										/>
 								</div>
-
 							<button>Додати</button>
 						</form>
 					</div>
