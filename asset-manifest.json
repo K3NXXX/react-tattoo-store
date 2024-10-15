@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-tattoo-store/static/css/main.b9461f12.css",
-    "main.js": "/react-tattoo-store/static/js/main.46188da7.js",
+    "main.css": "/react-tattoo-store/static/css/main.c339f8a0.css",
+    "main.js": "/react-tattoo-store/static/js/main.20589fcb.js",
     "static/media/intro-bg1.png": "/react-tattoo-store/static/media/intro-bg1.997741a18dac7d5563f9.png",
     "static/media/1.png": "/react-tattoo-store/static/media/1.aa185cc82bf70713ffa4.png",
     "static/media/catalog12.png": "/react-tattoo-store/static/media/catalog12.ba97cbb423382fdeff9c.png",
@@ -53,11 +53,11 @@
     "static/media/new.svg": "/react-tattoo-store/static/media/new.0491a84bf08ca0971d77.svg",
     "static/media/arrow-icon.svg": "/react-tattoo-store/static/media/arrow-icon.4e1f136b3a6945120bfef17c41321a11.svg",
     "static/media/hover-line.svg": "/react-tattoo-store/static/media/hover-line.ba97532bd464ba4a856f.svg",
-    "main.b9461f12.css.map": "/react-tattoo-store/static/css/main.b9461f12.css.map",
-    "main.46188da7.js.map": "/react-tattoo-store/static/js/main.46188da7.js.map"
+    "main.c339f8a0.css.map": "/react-tattoo-store/static/css/main.c339f8a0.css.map",
+    "main.20589fcb.js.map": "/react-tattoo-store/static/js/main.20589fcb.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9461f12.css",
-    "static/js/main.46188da7.js"
+    "static/css/main.c339f8a0.css",
+    "static/js/main.20589fcb.js"
   ]
 }
