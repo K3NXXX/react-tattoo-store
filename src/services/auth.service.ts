@@ -1,4 +1,5 @@
-import { IAuthForm, IUser } from '../types/auth.type'
+import { IAuthForm } from '../types/auth.type'
+import { IUserData } from '../types/order.type'
 import axios from '../utils/axios'
 
 class AuthService {
@@ -38,14 +39,25 @@ class AuthService {
 		}
 	}
 
-	// async updateData(data: IUser) {
-	// 	try {
-	// 		const {data} = await axios.post()
-	// 	} catch (error) {
-	// 		console.log(error);
-			
-	// 	}
-	// }
+	async logout() {
+		try {
+			const { data } = await axios.post('auth/logout')
+			return data
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	async updateData(userData: IUserData, userId: string) {
+		try {
+			const {data} = await axios.put(`/user/${userId}`, userData)
+			localStorage.setItem("userDataOrder", JSON.stringify(data))
+			return data
+		} catch (error) {
+			console.log(error);
+
+		}
+	}
 }
 
 export const authService = new AuthService()

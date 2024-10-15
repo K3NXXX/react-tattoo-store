@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import noAvatar from '../../assets/img/Account/noAvatar.webp'
-import CartGoods from '../Cart/CartGoods/CartGoods'
-import ReceiverData from '../Cart/UsersData/ReceiverData'
-import style from './Account.module.scss'
+import { authService } from '../../services/auth.service'
 import { IUser } from '../../types/auth.type'
-
+import CartGoods from '../Cart/CartGoods/CartGoods'
+import ReceiverData from '../Cart/ReceiverData/ReceiverData'
+import style from './Account.module.scss'
 
 const Account: React.FC = () => {
 	const navigate = useNavigate()
 	const [avatar, setAvatar] = useState<string>(noAvatar)
-    const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}")
+	const userData: IUser = JSON.parse(localStorage.getItem('userData') ?? '{}')
 
 	const handleAvatarUpload = (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -26,12 +25,13 @@ const Account: React.FC = () => {
 		}
 	}
 
-    const handleLogout = () => {
-        localStorage.removeItem('jwt');
-        localStorage.removeItem("userData")
-        navigate('/react-tattoo-store'); 
-        window.location.reload();  
-      }
+	const handleLogout = () => {
+		localStorage.removeItem('jwt')
+		localStorage.removeItem('userData')
+		navigate('/react-tattoo-store')
+		window.location.reload()
+		authService.logout()
+	}
 
 	return (
 		<section className={style.wrapper}>
@@ -57,10 +57,6 @@ const Account: React.FC = () => {
 							<div>
 								<p className={style.name}>{userData?.name}</p>
 							</div>
-							<div className={style.status}>
-								<div className={style.circle}></div>
-								<p>В мережі</p>
-							</div>
 							<button onClick={() => handleLogout()} className={style.exit}>
 								Вийти
 							</button>
@@ -75,7 +71,7 @@ const Account: React.FC = () => {
 								</div>
 								<div>
 									<p className={style.contactsData}>Номер тел.:</p>
-									<p>dadasda</p>
+									<p>{userData.phone_number}</p>
 								</div>
 							</div>
 						</div>
