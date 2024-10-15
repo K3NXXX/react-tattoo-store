@@ -18,7 +18,6 @@ const HeaderTop: React.FC = () => {
 	const isMounted = useRef(false)
 	const jwtToken = localStorage.getItem('jwt')
 	const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}")
-	console.log("userrrrr", userData)
 
 	const { items, totalPrice } = useSelector(
 		(state: RootState) => state.cartSlice
