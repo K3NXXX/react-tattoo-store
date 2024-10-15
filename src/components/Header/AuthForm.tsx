@@ -136,7 +136,7 @@ const AuthForm: React.FC = () => {
 									required: true,
 									minLength: {
 										value: 8,
-										message: 'Пароль повинен містити мінімум 10 символів',
+										message: 'Пароль повинен містити мінімум 8 символів',
 									},
 									pattern: {
 										value: /\d/,
