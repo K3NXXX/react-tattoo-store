@@ -30,7 +30,7 @@ const Account: React.FC = () => {
         localStorage.removeItem("userData")
         navigate('/react-tattoo-store'); 
         window.location.reload();  
-      }
+	  }
 
 	return (
 		<section className={style.wrapper}>
