@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import noAvatar from '../../assets/img/Account/noAvatar.webp'
 import CartGoods from '../Cart/CartGoods/CartGoods'
 import ReceiverData from '../Cart/UsersData/ReceiverData'
 import style from './Account.module.scss'
+import { IUser } from '../../types/auth.type'
+
 
 const Account: React.FC = () => {
 	const navigate = useNavigate()
 	const [avatar, setAvatar] = useState<string>(noAvatar)
+    const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}")
+
 	const handleAvatarUpload = (
 		event: React.ChangeEvent<HTMLInputElement>
 	): void => {
@@ -22,12 +26,12 @@ const Account: React.FC = () => {
 		}
 	}
 
-	const handleLogout = () => {
-		localStorage.removeItem('jwt')
-		navigate('/react-tattoo-store')
-	}
-
-
+    const handleLogout = () => {
+        localStorage.removeItem('jwt');
+        localStorage.removeItem("userData")
+        navigate('/react-tattoo-store'); 
+        window.location.reload();  
+      }
 
 	return (
 		<section className={style.wrapper}>
@@ -51,7 +55,7 @@ const Account: React.FC = () => {
 						</label>
 						<div className={style.online}>
 							<div>
-								<p className={style.name}>Volodymyr</p>
+								<p className={style.name}>{userData?.name}</p>
 							</div>
 							<div className={style.status}>
 								<div className={style.circle}></div>
@@ -67,7 +71,7 @@ const Account: React.FC = () => {
 							<div className={style.contacts}>
 								<div>
 									<p className={style.contactsData}>Ел. пошта:</p>
-									<p>daasda</p>
+									<p>{userData.email}</p>
 								</div>
 								<div>
 									<p className={style.contactsData}>Номер тел.:</p>

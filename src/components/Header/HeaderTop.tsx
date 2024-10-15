@@ -10,12 +10,15 @@ import { CartItemType } from '../../redux/slices/cartSlice'
 import { setIsAuthFormOpened } from '../../redux/slices/globalSlice'
 import { RootState } from '../../redux/store'
 import style from './Header.module.scss'
+import { IUser } from '../../types/auth.type'
 
 const HeaderTop: React.FC = () => {
 	let [openMenu, setOpenMenu] = useState<boolean>(false)
 	const dispatch = useDispatch()
 	const isMounted = useRef(false)
 	const jwtToken = localStorage.getItem('jwt')
+	const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}")
+	console.log("userrrrr", userData)
 
 	const { items, totalPrice } = useSelector(
 		(state: RootState) => state.cartSlice
@@ -139,8 +142,8 @@ const HeaderTop: React.FC = () => {
 					<a className={style.header__favLink} href=''>
 						<img src={favourite} alt='favourite' />
 					</a>
-					{jwtToken ? (
-						<Link to="/react-tattoo-store/account"
+					{jwtToken  ? (
+						<Link to={`/react-tattoo-store/${userData.role === "user" ? "account" : "admin-dashboard"}`}
 						>
 							<img
 								className={style.accountImg}

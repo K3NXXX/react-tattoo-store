@@ -3,28 +3,26 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSuccessData } from '../../../redux/slices/cartSlice'
 import { RootState } from '../../../redux/store'
+import { IUser } from '../../../types/auth.type'
 import style from './ReceiverData.module.scss'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
 
 interface ReceiverDataProps {
 	isAccount: boolean
 }
 
 const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
-    const queryClient = useQueryClient()
+	const dispatch = useDispatch()
+	const [isEmpty, setIsEmpty] = useState<boolean>(true)
+	const { items } = useSelector((state: RootState) => state.cartSlice)
+	const userData: IUser = JSON.parse(localStorage.getItem('userData') ?? '{}')
+	const [isEditUserData, setIsEditUserData] = useState(true)
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		reset,
 	} = useForm({ mode: 'onChange' })
-	const dispatch = useDispatch()
-	const [isEmpty, setIsEmpty] = useState<boolean>(true)
-	const { items } = useSelector((state: RootState) => state.cartSlice)
-
-    // const { data: userData } = useQuery(['user'], () =>
-	// 	Promise.resolve(queryClient.getQueryData(['user']))
-	// )
 
 	const onSubmit = (): void => {
 		dispatch(setSuccessData(true))
@@ -39,26 +37,44 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 		}
 	}, [items])
 
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={style.usersData__form}>
 			<div className={style.form__top}>
 				<div className={style.receiver__info}>
 					<p>01. Інформація про отримувача</p>
 					{isAccount ? (
-						<button className={style.receiver__info_btn}>Редагувати</button>
+						<div className={style.editButtons__wrapper}>
+							{isEditUserData === false && (
+								<button
+									onClick={() => setIsEditUserData(true)}
+									className={style.receiver__info_btn}
+								>
+									Відмінити
+								</button>
+							)}
+							<button
+								onClick={() => setIsEditUserData(false)}
+								className={style.receiver__info_btn}
+							>
+								{isEditUserData ? 'Редагувати' : 'Оновити дані'}
+							</button>
+						</div>
 					) : (
 						''
 					)}
 				</div>
 				<div className={style.top__row}>
 					<div className={style.column}>
-						<label>ФІО</label>
+						<label>Прізвище та ім'я</label>
 						<input
 							{...register('name', {
 								required: `Не всі дані вказані`,
 							})}
 							type='text'
-							placeholder='Іванов Іван Іванович'
+							placeholder='Іванов Іван'
+							defaultValue={userData.surname + ' ' + userData.name}
+							disabled={isEditUserData}
 						/>
 					</div>
 					<div className={style.column}>
@@ -74,6 +90,8 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 							})}
 							type='text'
 							placeholder='+380555353535'
+							defaultValue='+380555353535'
+							disabled={isEditUserData}
 						/>
 					</div>
 					<div className={style.column}>
@@ -88,6 +106,8 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 							})}
 							type='text'
 							placeholder='Ivanov2021@gmail.com'
+							defaultValue={userData.email}
+							disabled={isEditUserData}
 						/>
 					</div>
 				</div>
@@ -95,7 +115,7 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 			<div className={style.form__bottom}>
 				<div className={style.receiver__info}>
 					<p>02. Адреса доставки</p>
-                    {isAccount ? (
+					{isAccount ? (
 						<button className={style.receiver__info_btn}>Редагувати</button>
 					) : (
 						''

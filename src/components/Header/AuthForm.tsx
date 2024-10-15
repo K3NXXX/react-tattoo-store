@@ -6,12 +6,12 @@ import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { setIsAuthFormOpened } from '../../redux/slices/globalSlice'
 import { authService } from '../../services/auth.service'
-import { IAuthForm } from '../../types/register-form-type'
+import { IAuthForm } from '../../types/auth.type'
 import style from './Header.module.scss'
 import { RegisterErrors } from './RegisterErrors'
+import { setUserData } from '../../redux/slices/authSlice'
 
 const AuthForm: React.FC = () => {
-	const queryClient = useQueryClient()
 	const dispatch = useDispatch()
 	const [activeAuthWay, setActiveAuthWay] = useState('register')
 	const [authWay, setAuthWay] = useState('register')
@@ -25,9 +25,10 @@ const AuthForm: React.FC = () => {
 	const { mutate: registerMutate } = useMutation({
 		mutationKey: ['register'],
 		mutationFn: (data: IAuthForm) => authService.register(data),
-		onSuccess() {
+		onSuccess(data) {
 			toast.success('Реєстрація пройшла успішно')
 			dispatch(setIsAuthFormOpened(false))
+			localStorage.setItem("userData", JSON.stringify(data))
 			reset()
 		},
 		onError(error: any) {
@@ -41,8 +42,8 @@ const AuthForm: React.FC = () => {
 		onSuccess(data) {
 			toast.success('Авторизація пройшла успішно')
 			dispatch(setIsAuthFormOpened(false))
+			localStorage.setItem("userData", JSON.stringify(data))
 			reset()
-			queryClient.setQueryData(['user'], data)
 		},
 		onError(error: any) {
 			toast.error(error.response.data.error)
@@ -50,7 +51,6 @@ const AuthForm: React.FC = () => {
 	})
 
 	const onSubmit = (data: IAuthForm) => {
-		console.log('data', data)
 		if (authWay === 'register') {
 			registerMutate(data)
 		} else if (authWay === 'login') {
