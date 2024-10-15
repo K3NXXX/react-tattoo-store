@@ -1,4 +1,4 @@
-import { IAuthForm } from '../types/register-form-type'
+import { IAuthForm, IUser } from '../types/auth.type'
 import axios from '../utils/axios'
 
 class AuthService {
@@ -29,14 +29,23 @@ class AuthService {
 
 	async getMe() {
 		try {
-			const { data } = await axios.get(`auth/me`);
-			console.log('getMe', data);
-			return data;
+			const { data } = await axios.get(`auth/me`)
+			console.log('getMe', data)
+			return data
 		} catch (error) {
-			console.error('Error fetching user data:', error);
-			throw error;
+			console.error('Error fetching user data:', error)
+			throw error
 		}
 	}
+
+	// async updateData(data: IUser) {
+	// 	try {
+	// 		const {data} = await axios.post()
+	// 	} catch (error) {
+	// 		console.log(error);
+			
+	// 	}
+	// }
 }
 
 export const authService = new AuthService()

@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Account from './pages/Account/Account'
 import { authService } from './services/auth.service'
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard'
 
 const App: React.FC = () => {
 	const modal = useSelector((state: RootState) => state.categorySlice.modal)
@@ -42,6 +43,7 @@ const App: React.FC = () => {
 					<Route path='/react-tattoo-store' element={<Home />} />
 					<Route path='/react-tattoo-store/cart' element={<Cart />} />
 					<Route path='/react-tattoo-store/account' element={<Account />} />
+					<Route path='/react-tattoo-store/admin-dashboard' element={<AdminDashboard />} />
 					<Route
 						path='/react-tattoo-store/catalog/:id'
 						element={<CatalogFrame />}

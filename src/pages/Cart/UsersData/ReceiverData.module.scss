@@ -28,11 +28,15 @@
             justify-content: space-between;
             align-items: center;
             width: 800px;
+            .editButtons__wrapper {
+                display: flex;
+                gap: 0 20px;
+            }
           
             .receiver__info_btn {
                 background: none !important;
                 color: rgb(187, 140, 95);
-                width: 100px;
+                width: 150px;
                 height: none;
                 transition: 0.3s ease;
                 &:hover {
@@ -44,6 +48,7 @@
             display: grid;
             grid-template-columns: 289px 186px 289px;
             gap: 0px 20px;
+
             @media (max-width: 830px) {
                 grid-template-columns: 400px;
                 gap: 20px 0px;
@@ -60,7 +65,12 @@
                     font-size: 16px;
                     font-family: Jost;
                     padding: 23px 20px 23px 30px;
+                    background-color: white;
                 }
+                input[disabled] {
+                    background-color: white;
+                }
+                    
             }
         }
     }

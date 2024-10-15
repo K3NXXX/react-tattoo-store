@@ -6,3 +6,13 @@ export interface IAuthForm {
 	phone_number: string
 	token: string
 }
+
+export interface IUser {
+	token: string,
+	_id: string
+	name: string
+	surname: string
+	email: string
+	role: string
+
+}
