@@ -226,7 +226,7 @@ const AdminDashboard: React.FC = () => {
               <button>Додати</button>
             </form>
           ) : (
-            <div key="stats">Stat</div>
+            <div key="stats">Stats</div>
           )}
           <div className={style.userInfo}>
             <div className={style.column}>
