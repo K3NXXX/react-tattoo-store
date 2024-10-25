@@ -5,3 +5,10 @@ export interface IAdmin {
   role: string;
   token: string;
 }
+
+export interface IAdminData {
+  userData: {
+    _id: string;
+    email: string;
+  };
+}
