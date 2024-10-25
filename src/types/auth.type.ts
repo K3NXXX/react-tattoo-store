@@ -14,4 +14,6 @@ export interface IUser {
   surname: string;
   email: string;
   role: string;
+  cart: [];
+  favorites: [];
 }
