@@ -1,0 +1,124 @@
+.wrapper {
+	max-width: 1246px;
+	margin: 0 auto;
+	padding-top: 50px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 50px;
+	.content {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0 100px;
+		.left {
+			.img__wrapper img {
+				height: 480px;
+
+				margin-bottom: 50px;
+			}
+			.description {
+				margin-bottom: 50px;
+				.description__title {
+					color: rgb(62, 66, 75);
+					font-family: Jost;
+					font-size: 25px;
+					font-weight: 700;
+					margin-bottom: 20px;
+				}
+				.description__text {
+					color: rgb(62, 66, 75);
+					font-family: Jost;
+					font-size: 17px;
+					font-weight: 400;
+					line-height: 140%;
+				}
+			}
+		}
+		.right {
+			.product__title {
+				color: rgb(62, 66, 75);
+				font-family: Jost;
+				font-size: 30px;
+				font-weight: 700;
+				line-height: 115%;
+				margin-bottom: 20px;
+			}
+			.product_rating {
+				margin-bottom: 20px;
+			}
+			.product__price {
+				color: rgb(187, 140, 95);
+				font-family: Jost;
+				font-size: 24px;
+				font-weight: 700;
+				line-height: 130%;
+				letter-spacing: 0%;
+				margin-bottom: 50px;
+			}
+			.addToCart {
+				display: flex;
+				align-items: center;
+				gap: 50px;
+				margin-bottom: 250px;
+				.addToCart__left {
+					.quantity {
+						display: flex;
+						gap: 0 25px;
+						align-items: center;
+						svg {
+							cursor: pointer;
+						}
+						.count__number {
+							border: 1.5px solid #bb8c5f;
+							padding: 5px 12px;
+						}
+					}
+				}
+				.addToCart__right {
+					.addToCart__button {
+						margin: 0 auto;
+						display: inline-flex;
+						justify-content: center;
+						align-items: center;
+						color: #faf6f2;
+						text-align: center;
+						font-family: Jost;
+						font-size: 20px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 150%;
+						background-image: url('../../assets/img/intro-btn.svg');
+						background-repeat: no-repeat;
+						background-position: center;
+						background-size: contain;
+						width: 332px;
+						height: 70px;
+						transition: 0.3s ease;
+						&:hover {
+							opacity: 0.9;
+						}
+						@media (max-width: 430px) {
+							width: 230px;
+						}
+					}
+				}
+			}
+			.delivery {
+				margin-bottom: 50px;
+				.delivery__title {
+					color: rgb(62, 66, 75);
+					font-family: Jost;
+					font-size: 25px;
+					font-weight: 700;
+					margin-bottom: 20px;
+				}
+				.delivery__text {
+					color: rgb(62, 66, 75);
+					font-family: Jost;
+					font-size: 17px;
+					font-weight: 400;
+					line-height: 140%;
+				}
+			}
+		}
+	}
+}

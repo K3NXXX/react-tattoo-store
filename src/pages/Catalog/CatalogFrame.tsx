@@ -101,7 +101,7 @@ const CatalogFrame: React.FC = () => {
             </div>
             <div className={style.catalog__list}>
                 {filteredCatalogGoodsPrice.length > 0 ? filteredCatalogGoodsPrice.map((good : CategoryItem) => {
-                    return <CategoryCard key={good.id} good={good}/>
+                    return <CategoryCard key={good._id} good={good}/>
                 }) : (<span className={style.noGoods}>Товарів не знайдено</span>)}
             </div>
         </div>

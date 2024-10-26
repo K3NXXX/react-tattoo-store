@@ -14,8 +14,20 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 	const dispatch = useDispatch()
 	const [isEmpty, setIsEmpty] = useState<boolean>(true)
 	const { items } = useSelector((state: RootState) => state.cartSlice)
+
 	const userData: IUser = JSON.parse(localStorage.getItem('userData') ?? '{}')
-	const [isEditUserData, setIsEditUserData] = useState(true)
+	const addressData = JSON.parse(localStorage.getItem('addressData') ?? '{}')
+
+	const [name, setName] = useState(userData.surname + ' ' + userData.name || '')
+	const [phone, setPhone] = useState(userData.phone_number || '')
+	const [email, setEmail] = useState(userData.email || '')
+
+	const [city, setCity] = useState(addressData.city || '')
+	const [street, setStreet] = useState(addressData.street || '')
+	const [flat, setFlat] = useState(addressData.flat || '')
+	const [entrance, setEntrance] = useState(addressData.entrance || '')
+	const [floor, setFloor] = useState(addressData.floor || '')
+	const [intercom, setIntercom] = useState(addressData.intercom || '')
 
 	const {
 		register,
@@ -31,41 +43,22 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 	}
 
 	useEffect(() => {
-		if (items.length < 1) {
-			setIsEmpty(true)
-		} else {
-			setIsEmpty(false)
-		}
+		setIsEmpty(items.length < 1)
 	}, [items])
+
+	useEffect(() => {
+		localStorage.setItem('userData', JSON.stringify({ surname: name.split(' ')[0], name: name.split(' ')[1], phone_number: phone, email }))
+	}, [name, phone, email])
+
+	useEffect(() => {
+		localStorage.setItem('addressData', JSON.stringify({ city, street, flat, entrance, floor, intercom }))
+	}, [city, street, flat, entrance, floor, intercom])
 
 	return (
 		<div className={style.usersData__form}>
 			<div className={style.form__top}>
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					className={style.receiver__info}
-				>
+				<form onSubmit={handleSubmit(onSubmit)} className={style.receiver__info}>
 					<p>01. Інформація про отримувача</p>
-					{isAccount ? (
-						<div className={style.editButtons__wrapper}>
-							{isEditUserData === false && (
-								<button
-									onClick={() => setIsEditUserData(true)}
-									className={style.receiver__info_btn}
-								>
-									Відмінити
-								</button>
-							)}
-							<button
-								onClick={() => setIsEditUserData(false)}
-								className={style.receiver__info_btn}
-							>
-								{isEditUserData ? 'Редагувати' : 'Оновити дані'}
-							</button>
-						</div>
-					) : (
-						''
-					)}
 				</form>
 				<div className={style.top__row}>
 					<div className={style.column}>
@@ -76,8 +69,8 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 							})}
 							type='text'
 							placeholder='Іванов Іван'
-							defaultValue={userData.surname + ' ' + userData.name}
-							disabled={isEditUserData}
+							value={name}
+							onChange={(e) => setName(e.target.value)}
 						/>
 					</div>
 					<div className={style.column}>
@@ -93,8 +86,8 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 							})}
 							type='text'
 							placeholder='+380555353535'
-							defaultValue={userData.phone_number}
-							disabled={isEditUserData}
+							value={phone}
+							onChange={(e) => setPhone(e.target.value)}
 						/>
 					</div>
 					<div className={style.column}>
@@ -109,12 +102,13 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 							})}
 							type='text'
 							placeholder='Ivanov2021@gmail.com'
-							defaultValue={userData.email}
-							disabled={isEditUserData}
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
 						/>
 					</div>
 				</div>
 			</div>
+
 			<div className={style.form__bottom}>
 				<div className={style.receiver__info}>
 					<p>02. Адреса доставки</p>
@@ -126,7 +120,8 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 							<input
 								type='text'
 								placeholder='Львів'
-								disabled={isEditUserData}
+								value={city}
+								onChange={(e) => setCity(e.target.value)}
 							/>
 						</div>
 						<div className={style.column}>
@@ -134,35 +129,54 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
 							<input
 								type='text'
 								placeholder='вул. Львівська, 13'
-								disabled={isEditUserData}
+								value={street}
+								onChange={(e) => setStreet(e.target.value)}
 							/>
 						</div>
 					</div>
 					<div className={style.flat}>
 						<div className={style.column}>
 							<label>Квартира / офіс</label>
-							<input type='text' placeholder='324' disabled={isEditUserData} />
+							<input
+								type='text'
+								placeholder='324'
+								value={flat}
+								onChange={(e) => setFlat(e.target.value)}
+							/>
 						</div>
 						<div className={style.column}>
 							<label>Під'їзд</label>
-							<input type='text' placeholder='5' disabled={isEditUserData} />
+							<input
+								type='text'
+								placeholder='5'
+								value={entrance}
+								onChange={(e) => setEntrance(e.target.value)}
+							/>
 						</div>
 						<div className={style.column}>
 							<label>Поверх</label>
-							<input type='text' placeholder='7' disabled={isEditUserData} />
+							<input
+								type='text'
+								placeholder='7'
+								value={floor}
+								onChange={(e) => setFloor(e.target.value)}
+							/>
 						</div>
 						<div className={style.column}>
 							<label>Домофон</label>
-							<input type='text' placeholder='6470' disabled={isEditUserData} />
+							<input
+								type='text'
+								placeholder='6470'
+								value={intercom}
+								onChange={(e) => setIntercom(e.target.value)}
+							/>
 						</div>
 					</div>
 				</div>
 			</div>
-			{(errors.name ||
-				errors.phone ||
-				errors.email ||
-				errors.city ||
-				errors.flat) && <div>Дані вказано не всі або некоректно</div>}
+			{(errors.name || errors.phone || errors.email || errors.city || errors.street) && (
+				<div>Дані вказано не всі або некоректно</div>
+			)}
 			<div className={style.empty__error}>
 				{isEmpty ? 'Додайте товар, щоб оформити замовлення' : ''}
 			</div>
