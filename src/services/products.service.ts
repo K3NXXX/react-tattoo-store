@@ -1,21 +1,37 @@
+import axios from "../utils/axios";
 
-import { CategoryItem } from '../redux/slices/categorySlice'
-import { IAuthForm } from '../types/auth.type'
-import axios from '../utils/axios'
+import { CategoryItem } from "../redux/slices/categorySlice";
+import { IProduct } from "../types/product.type";
 
 class ProductsService {
-	private BASE_URL = 'https://tattoo-shop-801cb78430a8.herokuapp.com/'
+  private BASE_URL = "https://tattoo-shop-801cb78430a8.herokuapp.com/products";
 
-	async getAll() {
-		const { data } = await axios.get<CategoryItem[]>(`${this.BASE_URL}products`)
-		return data
-	}
+  async create(formData: IProduct) {
+    const { data } = await axios.post<IProduct>(`${this.BASE_URL}`, formData);
 
-	async getOne(id: string) {
-		const { data } = await axios.get<CategoryItem>(`${this.BASE_URL}products/${id}`)
-		console.log("data", data)
-		return data
-	}
+    return data;
+  }
+
+  async update(_id: string, formData: IProduct) {
+    const { data } = await axios.put<IProduct>(
+      `${this.BASE_URL}/${_id}`,
+      formData,
+    );
+    return data;
+  }
+
+  async getAll() {
+    const { data } = await axios.get(`${this.BASE_URL}/`);
+
+    return data;
+  }
+  async getOne(id: string) {
+    const { data } = await axios.get<CategoryItem>(
+      `${this.BASE_URL}products/${id}`,
+    );
+    console.log("data", data);
+    return data;
+  }
 }
 
 export const productsService = new ProductsService();
