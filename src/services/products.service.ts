@@ -1,3 +1,4 @@
+
 import { CategoryItem } from '../redux/slices/categorySlice'
 import { IAuthForm } from '../types/auth.type'
 import axios from '../utils/axios'
@@ -17,4 +18,4 @@ class ProductsService {
 	}
 }
 
-export const productsService = new ProductsService()
+export const productsService = new ProductsService();
