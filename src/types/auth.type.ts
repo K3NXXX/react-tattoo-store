@@ -13,6 +13,7 @@ export interface IUser {
   name: string;
   surname: string;
   email: string;
+  phone_number: any;
   role: string;
   cart: [];
   favorites: [];
