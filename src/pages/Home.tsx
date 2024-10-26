@@ -28,7 +28,8 @@ const Home: React.FC = () => {
             searchParams = ""
            }
            try {
-            const res = await axios.get(`https://64cc9b3a2eafdcdc851a0362.mockapi.io/goods?search=${searchParams}`)
+            const res = await axios.get(`https://tattoo-shop-801cb78430a8.herokuapp.com/products?trend=${searchParams}`)
+            console.debug("res", res.data)
             dispatch(setGoods(res.data))
             dispatch(setIsLoading(false))
             if (searchParams === "new") {

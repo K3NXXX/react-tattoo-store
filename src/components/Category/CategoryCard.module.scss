@@ -6,6 +6,7 @@
     display: inline-block;
     position: relative;
     transition: all 0.3s ease;  
+    cursor: pointer;
     &:hover {
         transform: scale(1.1);
         padding: 15px 0 70px 0;

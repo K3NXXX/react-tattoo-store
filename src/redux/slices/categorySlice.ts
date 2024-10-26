@@ -3,10 +3,12 @@ export type CategoryItem = {
     forWho: string;
     type: string;
     category: string;
-    id: number;
+    _id: number;
     image: string;
     name: string;
     price: string;
+    description: string
+    rating: number
 }
 type CategoryInitialState = {
     goods: CategoryItem[],
