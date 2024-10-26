@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 1246px;
@@ -5,6 +9,8 @@
   padding: 30px 15px;
   display: grid;
   gap: 0 20px;
+
+  overflow: auto;
 }
 
 .path {
@@ -314,8 +320,72 @@
   }
 
   .activeAdmin {
-    background-color: #d0f0c0; // Світло-зелений фон для активного
-    border: 1px solid #a3d9a1; // Зелена обводка
-    color: #3b763a; // Темно-зелений текст
+    background-color: #d0f0c0;
+    border: 1px solid #a3d9a1;
+    color: #3b763a;
+  }
+}
+
+.productsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 450px));
+  gap: 20px;
+
+  .productCard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 450px));
+    gap: 20px;
+
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .productInput {
+      h3 {
+        margin: 0 0 10px;
+        font-size: 26px;
+      }
+
+      input {
+        margin: 10px 0;
+        font-size: 18px;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 80px;
+        font-size: 18px;
+      }
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .productImage {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
   }
 }

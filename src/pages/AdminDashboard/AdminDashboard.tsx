@@ -6,6 +6,7 @@ import AdminForm from "./RegisterAdmin";
 import ProductForm from "./ProductForm";
 import InfoPanel from "./InfoPanel";
 import AdminList from "./GetAdmins";
+import GetAndUpdateProducts from "./GetAndUpdateProducts";
 
 const AdminDashboard: React.FC = () => {
   const [panelId, setPanelId] = useState(0);
@@ -36,17 +37,23 @@ const AdminDashboard: React.FC = () => {
               onClick={() => handleSetPanelId(2)}
               className={panelId === 2 ? style.activeButton : ""}
             >
-              Зареєструвати адміна
+              Змінити товар
             </button>
             <button
               onClick={() => handleSetPanelId(3)}
               className={panelId === 3 ? style.activeButton : ""}
             >
-              Адміни
+              Зареєструвати адміна
             </button>
             <button
               onClick={() => handleSetPanelId(4)}
               className={panelId === 4 ? style.activeButton : ""}
+            >
+              Адміни
+            </button>
+            <button
+              onClick={() => handleSetPanelId(4)}
+              className={panelId === 5 ? style.activeButton : ""}
             >
               Статистика
             </button>
@@ -54,12 +61,14 @@ const AdminDashboard: React.FC = () => {
           {panelId === 1 ? (
             <ProductForm />
           ) : panelId === 2 ? (
-            <AdminForm />
+            <GetAndUpdateProducts />
           ) : panelId === 3 ? (
             <div key="admins">
-              <AdminList userData={userData} />
+              <AdminForm />
             </div>
           ) : panelId === 4 ? (
+            <AdminList userData={userData} />
+          ) : panelId === 5 ? (
             <div key="stats">Статистика</div>
           ) : (
             <p>Вітаю, {userData.email}</p>
