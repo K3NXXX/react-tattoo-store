@@ -26,9 +26,7 @@ class ProductsService {
     return data;
   }
   async getOne(id: string) {
-    const { data } = await axios.get<CategoryItem>(
-      `${this.BASE_URL}products/${id}`,
-    );
+    const { data } = await axios.get<CategoryItem>(`${this.BASE_URL}/${id}`);
     console.log("data", data);
     return data;
   }
