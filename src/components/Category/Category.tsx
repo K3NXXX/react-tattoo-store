@@ -1,7 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
 import { useRef, useState } from 'react'
 import { CategoryItem } from '../../redux/slices/categorySlice'
-import { productsService } from '../../services/products.service'
 import Skeleton from '../Skeleton/Skeleton'
 import style from './Category.module.scss'
 import CategoryCard from './CategoryCard'

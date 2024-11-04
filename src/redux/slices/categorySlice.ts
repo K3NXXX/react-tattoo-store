@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 export type CategoryItem = {
+    _id: string;
     forWho: string;
     type: string;
     category: string;
-    _id: number;
     image: string;
     name: string;
     price: string;

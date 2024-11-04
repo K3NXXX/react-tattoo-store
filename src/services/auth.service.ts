@@ -1,12 +1,12 @@
-import { IAuthForm } from '../types/auth.type'
+import { IUser} from '../types/auth.type'
 import { IUserData } from '../types/order.type'
 import axios from '../utils/axios'
 
 class AuthService {
 	private BASE_URL = 'https://tattoo-shop-801cb78430a8.herokuapp.com/'
 
-	async register(formData: IAuthForm) {
-		const { data } = await axios.post<IAuthForm>(
+	async register(formData: IUser) {
+		const { data } = await axios.post<IUser>(
 			`${this.BASE_URL}auth/signup`,
 			formData
 		)
@@ -16,8 +16,8 @@ class AuthService {
 		return data
 	}
 
-	async login(formData: IAuthForm) {
-		const { data } = await axios.post<IAuthForm>(
+	async login(formData: IUser) {
+		const { data } = await axios.post<IUser>(
 			`${this.BASE_URL}auth/login`,
 			formData
 		)

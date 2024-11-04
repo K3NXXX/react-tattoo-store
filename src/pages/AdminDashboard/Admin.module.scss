@@ -335,38 +335,71 @@
   gap: 20px;
 
   .productCard {
+    position: relative;
+
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 450px));
-    gap: 20px;
+    gap: 15px;
 
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition:
-      transform 0.3s,
-      box-shadow 0.3s;
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    .changeProductButton {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+
+      background: none;
+      color: #bb8c5f;
+      font-size: 14px;
+      text-decoration: underline;
+
+      cursor: pointer;
+    }
+
+    .productCardButtons {
+      display: flex;
+      justify-content: space-between;
+
+      .saveButton {
+        background: none;
+        color: #bb8c5f;
+        font-size: 16px;
+        text-decoration: underline;
+      }
+
+      .cancelButton {
+        background: none;
+        color: #ff004d;
+        font-size: 16px;
+      }
     }
 
     .productInput {
-      h3 {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .productName {
+        width: 100%;
         margin: 0 0 10px;
         font-size: 26px;
       }
 
-      input {
-        margin: 10px 0;
+      h4 {
         font-size: 18px;
+      }
+
+      input {
+        font-size: 18px;
+        margin-left: 6px;
       }
 
       textarea {
         width: 100%;
-        min-height: 80px;
         font-size: 18px;
       }
     }
@@ -377,7 +410,6 @@
     }
 
     p {
-      margin: 10px 0;
       font-size: 18px;
     }
 

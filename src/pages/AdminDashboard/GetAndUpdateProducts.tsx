@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import style from "./Admin.module.scss";
 import { productsService } from "../../services/products.service";
@@ -6,6 +6,11 @@ import { IProduct } from "../../types/product.type";
 import { toast } from "react-toastify";
 
 const GetAndUpdateProducts: React.FC = () => {
+  const [editingProductId, setEditingProductId] = useState<string | null>(null);
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const [originalProduct, setOriginalProduct] = useState<IProduct | null>(null);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
   const { data, error, isLoading } = useQuery<IProduct[]>({
     queryKey: ["products"],
     queryFn: () => productsService.getAll(),
@@ -16,17 +21,47 @@ const GetAndUpdateProducts: React.FC = () => {
     mutationFn: (data: IProduct) => productsService.update(data._id, data),
     onSuccess: () => {
       toast.success("Товар оновлено успішно");
+      setErrors({});
     },
     onError: (error: any) => {
       toast.error(error.response.data.error);
     },
   });
 
-  const [editingProductId, setEditingProductId] = useState<string | null>(null);
-  const [products, setProducts] = useState<IProduct[]>(data || []);
+  const validateProduct = (product: IProduct) => {
+    let hasErrors = false;
+    setErrors({});
+
+    if (!product.name) {
+      toast.error("Назва товару є обов'язковою.");
+      setErrors((prev) => ({ ...prev, name: "Назва товару є обов'язковою." }));
+      hasErrors = true;
+    }
+
+    if (product.price <= 0) {
+      toast.error("Ціна повинна бути більшою за 0.");
+      setErrors((prev) => ({
+        ...prev,
+        price: "Ціна повинна бути більшою за 0.",
+      }));
+      hasErrors = true;
+    }
+
+    const validTrends = ["new", "hits", "popular"];
+    if (product.trending && !validTrends.includes(product.trending)) {
+      toast.error(
+        "Недійсне значення тенденції. Дозволені значення: new, hits, popular.",
+      );
+      setErrors((prev) => ({ ...prev, trending: "Недійсне значення." }));
+      hasErrors = true;
+    }
+
+    return hasErrors;
+  };
 
   const handleEditClick = (product: IProduct) => {
     setEditingProductId(product._id);
+    setOriginalProduct({ ...product });
   };
 
   const handleChange = (
@@ -37,11 +72,38 @@ const GetAndUpdateProducts: React.FC = () => {
       p._id === product._id ? { ...p, [e.target.name]: e.target.value } : p,
     );
     setProducts(updatedProducts);
+    setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
+
+    if (e.target.tagName === "TEXTAREA") {
+      e.target.style.height = "auto";
+      e.target.style.height = `${e.target.scrollHeight}px`;
+    }
   };
 
+  useEffect(() => {
+    if (data) {
+      setProducts(data);
+    }
+  }, [data]);
+
   const handleSave = (product: IProduct) => {
-    mutate(product);
-    setEditingProductId(null); // Exit editing mode
+    const hasErrors = validateProduct(product);
+    if (!hasErrors) {
+      mutate(product);
+      setEditingProductId(null);
+      setOriginalProduct(null);
+    }
+  };
+
+  const handleCancel = () => {
+    if (originalProduct) {
+      const updatedProducts = products.map((p) =>
+        p._id === originalProduct._id ? originalProduct : p,
+      );
+      setProducts(updatedProducts);
+    }
+    setEditingProductId(null);
+    setOriginalProduct(null);
   };
 
   if (isLoading) return <p>Завантаження...</p>;
@@ -59,51 +121,77 @@ const GetAndUpdateProducts: React.FC = () => {
             <>
               <div className={style.productInput}>
                 <input
+                  className={style.productName}
                   type="text"
                   name="name"
                   value={product.name}
                   onChange={(e) => handleChange(e, product)}
                 />
               </div>
-              <textarea
-                name="description"
-                value={product.description}
-                onChange={(e) => handleChange(e, product)}
-              />
-              <input
-                type="number"
-                name="price"
-                value={product.price}
-                onChange={(e) => handleChange(e, product)}
-              />
-              <input
-                type="text"
-                name="category"
-                value={product.category}
-                onChange={(e) => handleChange(e, product)}
-              />
-              <input
-                type="text"
-                name="forWho"
-                value={product.forWho}
-                onChange={(e) => handleChange(e, product)}
-              />
-              <input
-                type="text"
-                name="trending"
-                value={product.trending}
-                onChange={(e) => handleChange(e, product)}
-              />
-              <input
-                type="number"
-                name="rating"
-                value={product.rating}
-                onChange={(e) => handleChange(e, product)}
-              />
-              <button onClick={() => handleSave(product)}>Зберегти</button>
-              <button onClick={() => setEditingProductId(null)}>
-                Скасувати
-              </button>
+              <div className={style.productInput}>
+                <textarea
+                  name="description"
+                  value={product.description}
+                  onChange={(e) => handleChange(e, product)}
+                  style={{ resize: "none" }}
+                />
+              </div>
+              <div className={style.productInput}>
+                <h4>Ціна: </h4>
+                <input
+                  type="number"
+                  name="price"
+                  value={product.price}
+                  onChange={(e) => handleChange(e, product)}
+                />
+              </div>
+              <div className={style.productInput}>
+                <h4>Категорія: </h4>
+                <input
+                  type="text"
+                  name="category"
+                  value={product.category}
+                  onChange={(e) => handleChange(e, product)}
+                />
+              </div>
+              <div className={style.productInput}>
+                <h4>Для кого: </h4>
+                <input
+                  type="text"
+                  name="forWho"
+                  value={product.forWho}
+                  onChange={(e) => handleChange(e, product)}
+                />
+              </div>
+              <div className={style.productInput}>
+                <h4>Тренд: </h4>
+                <input
+                  type="text"
+                  name="trending"
+                  value={product.trending}
+                  onChange={(e) => handleChange(e, product)}
+                />
+              </div>
+              <div className={style.productInput}>
+                <h4>Рейтинг: </h4>
+                <input
+                  type="number"
+                  name="rating"
+                  value={product.rating}
+                  onChange={(e) => handleChange(e, product)}
+                />
+              </div>
+              <div className={style.productCardButtons}>
+                <button
+                  className={style.saveButton}
+                  onClick={() => handleSave(product)}
+                >
+                  Зберегти
+                </button>
+                <button className={style.cancelButton} onClick={handleCancel}>
+                  Скасувати
+                </button>
+              </div>
             </>
           ) : (
             <>
@@ -119,7 +207,12 @@ const GetAndUpdateProducts: React.FC = () => {
                 alt={product.name}
                 className={style.productImage}
               />
-              <button onClick={() => handleEditClick(product)}>Змінити</button>
+              <button
+                className={style.changeProductButton}
+                onClick={() => handleEditClick(product)}
+              >
+                Змінити
+              </button>
             </>
           )}
         </li>
