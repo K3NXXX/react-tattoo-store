@@ -1,26 +1,94 @@
 import { CircularProgress, Rating } from '@mui/material'
 import { useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import productImage from '../../assets/img/2.png'
+import { addItems, CartItemType } from '../../redux/slices/cartSlice'
+import { setBinCount, setModal } from '../../redux/slices/categorySlice'
+import { RootState } from '../../redux/store'
 import { productsService } from '../../services/products.service'
 import style from './FullProduct.module.scss'
-import { useEffect } from 'react'
 
 const FullProduct: React.FC = () => {
 	const { id } = useParams()
+	const userData = JSON.parse(localStorage.getItem('userData') ?? '{}')
+	const userId = userData?._id
 
-	const { data: good, isLoading } = useQuery({
+	const dispatch = useDispatch()
+
+	const [quantity, setQuantity] = useState(1)
+
+	const binCount = useSelector(
+		(state: RootState) => state.categorySlice.binCount
+	)
+
+	const { data: good, isLoading: goodLoading } = useQuery({
 		queryKey: ['getProduct'],
 		queryFn: () => productsService.getOne(id as string),
 	})
-	if (isLoading) {
-		<CircularProgress />
-	}
+
+	const { data: rating, isLoading: ratingLoading } = useQuery({
+		queryKey: ['getRating'],
+		queryFn: () => productsService.getRating(id as string),
+		enabled: !!id,
+	})
+
+	useEffect(() => {
+		if (rating) {
+			setCurrentRating(rating.globalRating)
+		}
+	}, [rating])
+
+	const [currentRating, setCurrentRating] = useState<number | null>(null)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
-
 	}, [])
+
+	const handleRatingChange = async (newValue: number | null) => {
+		if (newValue !== null) {
+			try {
+				const data = await productsService.addOrUpdateRating(
+					id as string,
+					userId,
+					newValue
+				)
+				console.log('Rating updated successfully:', data)
+				setCurrentRating(newValue)
+			} catch (error) {
+				console.error('Error updating rating:', error)
+			}
+		}
+	}
+
+	const handleAddToCart = (): void => {
+		if (good) {
+			const item: CartItemType = {
+				//@ts-ignore
+				id: good._id,
+				image: good.image,
+				name: good.name,
+				count: quantity,
+				price: parseFloat(good.price),
+			}
+			//@ts-ignore
+			dispatch(addItems(item))
+			dispatch(setBinCount(binCount + quantity))
+			dispatch(setModal(true))
+		}
+	}
+
+	const onClickPlusItem = (): void => {
+		setQuantity(prev => prev + 1)
+	}
+	const onClickMinusItem = (): void => {
+		if (quantity > 1) setQuantity(prev => prev - 1)
+	}
+
+	if (goodLoading || ratingLoading) {
+		return <CircularProgress />
+	}
+
 	return (
 		<div className={style.wrapper}>
 			<div className={style.content}>
@@ -30,21 +98,24 @@ const FullProduct: React.FC = () => {
 					</div>
 					<div className={style.description}>
 						<p className={style.description__title}>Опис</p>
-						<p className={style.description__text}>
-							{good?.description}
-						</p>
+						<p className={style.description__text}>{good?.description}</p>
 					</div>
 				</div>
 				<div className={style.right}>
-					<p className={style.product__title}>
-						{good?.name}
-					</p>
-					<Rating className={style.product_rating} value={good?.rating} />
+					<p className={style.product__title}>{good?.name}</p>
+					<Rating
+						className={style.product_rating}
+						value={currentRating}
+						onChange={(event, newValue) => {
+							handleRatingChange(newValue)
+						}}
+					/>
 					<p className={style.product__price}>{good?.price} ₴</p>
 					<div className={style.addToCart}>
 						<div className={style.addToCart__left}>
 							<div className={style.quantity}>
 								<svg
+									onClick={onClickMinusItem}
 									xmlns='http://www.w3.org/2000/svg'
 									width='15'
 									height='40'
@@ -53,8 +124,9 @@ const FullProduct: React.FC = () => {
 								>
 									<path d='M2 21H13V20H2V21Z' fill='#3E424B' />
 								</svg>
-								<span className={style.count__number}>{1}</span>
+								<span className={style.count__number}>{quantity}</span>
 								<svg
+									onClick={onClickPlusItem}
 									xmlns='http://www.w3.org/2000/svg'
 									width='15'
 									height='40'
@@ -71,7 +143,10 @@ const FullProduct: React.FC = () => {
 							</div>
 						</div>
 						<div className={style.addToCart__right}>
-							<button className={style.addToCart__button}>
+							<button
+								onClick={handleAddToCart}
+								className={style.addToCart__button}
+							>
 								Додати в корзину
 							</button>
 						</div>
@@ -96,4 +171,4 @@ const FullProduct: React.FC = () => {
 	)
 }
 
-export default FullProduct;
+export default FullProduct

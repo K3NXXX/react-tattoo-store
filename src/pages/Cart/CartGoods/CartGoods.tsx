@@ -23,7 +23,7 @@ const CartGoods:React.FC = ( ) => {
                 </svg>
                 <div className={style.goods}>
                         {items.length > 0 ? items.map((item: CartItemType) => {
-                            return <CartItem  key={item._id} item={item}/>
+                            return <CartItem  key={item.id} item={item}/>
                         }) : (
                             <div className={style.empty}>Корзина пуста</div>
                         )}

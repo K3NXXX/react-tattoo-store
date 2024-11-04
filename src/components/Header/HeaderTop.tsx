@@ -138,11 +138,10 @@ const HeaderTop: React.FC = () => {
         </div>
         <div className={style.right}>
           <Link to="/react-tattoo-store/cart" className={style.shop__bin}>
-            {/*<span>{totalPrice} ₴</span>*/}
-            {userData?.role === "user" ? (
-              <img src={shop_bin} alt="shop bin" />
-            ) : (
+            {userData?.role === "admin" ? (
               ""
+            ) : (
+              <img src={shop_bin} alt="shop bin" />
             )}
 
             {totalCount > 0 ? (
@@ -155,10 +154,10 @@ const HeaderTop: React.FC = () => {
             to="/react-tattoo-store/favorites"
             className={style.header__favLink}
           >
-            {userData?.role === "user" ? (
-              <img src={favourite} alt="favourite" />
-            ) : (
+            {userData?.role === "admin" ? (
               ""
+            ) : (
+              <img src={favourite} alt="favourite" />
             )}
             {userData?.favorites?.length > 0 ? (
               <span className={style.count}>{userData?.favorites?.length}</span>
