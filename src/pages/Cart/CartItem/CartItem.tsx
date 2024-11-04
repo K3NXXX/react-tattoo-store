@@ -8,9 +8,10 @@ type CartItemProps = {
 }
 const CartItem:React.FC<CartItemProps> = ({item}) => {
     const dispatch = useDispatch()
-    const onClickPlusItem = () : void => {
-        dispatch(addItems(item))
+    const onClickPlusItem = (): void => {
+        dispatch(addItems({ id: String(item.id), count: 1 }));
     }
+    
     const onClickMinusItem = () : void => {
         dispatch(minusItems(item.id))
     }
@@ -21,7 +22,7 @@ const CartItem:React.FC<CartItemProps> = ({item}) => {
     return (  
         <>
             <div className={style.good}>
-                <div><img className={style.goodImg} src={process.env.PUBLIC_URL + item.image} alt="good" /></div>
+                <div><img className={style.goodImg} src={item.image} alt="good" /></div>
                 <p className={style.name}>{item.name}</p>
                 <p className={style.price}>{item.price}₴</p>
                 <div className={style.quantity}>
@@ -40,7 +41,7 @@ const CartItem:React.FC<CartItemProps> = ({item}) => {
             </div>
             <div className={style.good__phone}>
                 <div className={style.good__phone_top}>
-                    <div><img className={style.goodImg} src={process.env.PUBLIC_URL + item.image} alt="good" /></div>
+                    <div><img className={style.goodImg} src={item.image} alt="good" /></div>
                     <div className={style.nameAndPrice}>
                         <p className={style.name}>{item.name}</p>
                         <p className={style.price}>{item.price}₴</p>
