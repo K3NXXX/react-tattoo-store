@@ -93,22 +93,15 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ good }) => {
     fetchRating();
   }, [good._id]);
 
-  const onClickHandle = (e: React.MouseEvent<HTMLDivElement>): void => {
-    e.preventDefault();
-
-    const price =
-      typeof good?.price === "string"
-        ? parseFloat(good.price.replace(/\s+/g, ""))
-        : good.price;
-
+	const handleAddToCart = (event:React.MouseEvent<HTMLSpanElement>): void => {
 		const item: CartItemType = {
-			id: +good._id,
+			id: good._id,
 			image: good.image,
 			name: good.name,
 			count: 1,
 			price: parseFloat(good.price),
 		}
-		e.preventDefault()
+		event.preventDefault()
 			//@ts-ignore
 		dispatch(addItems(item))
 		dispatch(setBinCount(binCount + 1))
@@ -182,7 +175,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ good }) => {
             )}
             <p className={style.info__price}>{good.price} ₴</p>
             {selectCard && (
-              <span onClick={onClickHandle} className={style.span__add}>
+              <span onClick={handleAddToCart} className={style.span__add}>
                 Додати в корзину
               </span>
             )}
@@ -235,7 +228,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ good }) => {
             <p className={style.info__name}>{good.name}</p>
             <Rating name="read-only" value={good.rating} readOnly />
             <p className={style.info__price}>{good.price} ₴</p>
-            <span onClick={onClickHandle} className={style.span__add}>
+            <span onClick={handleAddToCart} className={style.span__add}>
               Додати в корзину
             </span>
           </div>
