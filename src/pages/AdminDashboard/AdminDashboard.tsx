@@ -51,12 +51,6 @@ const AdminDashboard: React.FC = () => {
             >
               Адміни
             </button>
-            <button
-              onClick={() => handleSetPanelId(4)}
-              className={panelId === 5 ? style.activeButton : ""}
-            >
-              Статистика
-            </button>
           </div>
           {panelId === 1 ? (
             <ProductForm />
@@ -68,8 +62,6 @@ const AdminDashboard: React.FC = () => {
             </div>
           ) : panelId === 4 ? (
             <AdminList userData={userData} />
-          ) : panelId === 5 ? (
-            <div key="stats">Статистика</div>
           ) : (
             <p>Вітаю, {userData.email}</p>
           )}

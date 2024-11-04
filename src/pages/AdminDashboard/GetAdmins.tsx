@@ -23,7 +23,7 @@ const AdminList: React.FC<IAdminData> = ({ userData }) => {
     <ul className={style.adminList}>
       {data.map((admin: IAdmin) => (
         <li
-          className={userData.email == admin.email ? style.activeAdmin : ""}
+          className={userData.email === admin.email ? style.activeAdmin : ""}
           key={admin._id}
         >
           {admin.email}

@@ -22,7 +22,7 @@
     margin-top: 140px;
     & p:first-child {
         color: #3E424B;
-        font-family: Jost;
+        font-family: Jost, sans-serif;
         font-size: 60px;
         font-style: normal;
         font-weight: 400;
@@ -32,7 +32,6 @@
             text-align: center;
         }
         @media (max-width:768px) {
-            text-align: start;
             font-size: 40px;
             text-align: center;
         }
@@ -42,13 +41,12 @@
     }
     & p:nth-child(2) {
         color: #3E424B;
-        font-family: Roboto;
+        font-family: Roboto, sans-serif;
         font-size: 23px;
         font-style: normal;
         font-weight: 500;
         line-height: 115%; 
         max-width: 523px;
-        margin-bottom: 30px;
         text-align: center;
         margin: 0 auto 30px auto;
         @media (max-width:1835px) {
@@ -65,11 +63,12 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        background-color: transparent;
         width: 275px;
         height: 70px;
         color:  #FAF6F2;
         text-align: center;
-        font-family: Jost;
+        font-family: Jost, sans-serif;
         font-size: 20px;
         font-style: normal;
         font-weight: 400;
@@ -120,7 +119,7 @@
         
         span {
             color: #BB8C5F;
-            font-family: Jost;
+            font-family: Jost, sans-serif;
             font-size: 17px;
             font-style: normal;
             font-weight: 500;

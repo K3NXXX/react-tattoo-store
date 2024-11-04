@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { setIsAuthFormOpened } from '../../redux/slices/globalSlice'
 import { authService } from '../../services/auth.service'
-import { IAuthForm } from '../../types/auth.type'
+import {IUser} from '../../types/auth.type'
 import style from './Header.module.scss'
 import { RegisterErrors } from './RegisterErrors'
 
@@ -19,11 +19,11 @@ const AuthForm: React.FC = () => {
 		handleSubmit,
 		formState: { errors },
 		reset,
-	} = useForm<IAuthForm>({ reValidateMode: 'onSubmit' })
+	} = useForm<IUser>({ reValidateMode: 'onSubmit' })
 
 	const { mutate: registerMutate } = useMutation({
 		mutationKey: ['register'],
-		mutationFn: (data: IAuthForm) => authService.register(data),
+		mutationFn: (data: IUser) => authService.register(data),
 		onSuccess(data) {
 			toast.success('Реєстрація пройшла успішно')
 			dispatch(setIsAuthFormOpened(false))
@@ -37,7 +37,7 @@ const AuthForm: React.FC = () => {
 
 	const { mutate: loginMutate } = useMutation({
 		mutationKey: ['login'],
-		mutationFn: (data: IAuthForm) => authService.login(data),
+		mutationFn: (data: IUser) => authService.login(data),
 		onSuccess(data) {
 			toast.success('Авторизація пройшла успішно')
 			dispatch(setIsAuthFormOpened(false))
@@ -45,11 +45,12 @@ const AuthForm: React.FC = () => {
 			reset()
 		},
 		onError(error: any) {
-			toast.error(error.response.data.error)
-		},
+			const errorMessage = error?.response?.data?.error || 'Сталася помилка';
+			toast.error(errorMessage);
+		}
 	})
 
-	const onSubmit = (data: IAuthForm) => {
+	const onSubmit = (data: IUser) => {
 		if (authWay === 'register') {
 			registerMutate(data)
 		} else if (authWay === 'login') {
@@ -201,7 +202,7 @@ const AuthForm: React.FC = () => {
 									required: true,
 									minLength: {
 										value: 8,
-										message: 'Пароль повинен містити мінімум 10 символів',
+										message: 'Пароль повинен містити мінімум 8 символів',
 									},
 									pattern: {
 										value: /\d/,

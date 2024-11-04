@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { getItemsFromLS } from "../../utils/getItemsFromLS";
 import { getCartTotalPrice } from "../../utils/getCartTotalPrice";
 export type CartItemType = {
-    id: number;
+    _id: string;
     image: string;
     name: string;
     price: number;
@@ -24,7 +24,7 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addItems(state, action:PayloadAction<CartItemType>) {
-            const findItem = state.items.find(obj => obj.id === action.payload.id)
+            const findItem = state.items.find(obj => obj._id === action.payload._id)
             if (findItem) {
                 findItem.count++
             }else {
@@ -35,7 +35,7 @@ const cartSlice = createSlice({
             }, 0)
         },
         minusItems(state, action) {
-            const findItem = state.items.find(obj => obj.id === action.payload);
+            const findItem = state.items.find(obj => obj._id === action.payload);
             if (findItem) {
                 if (findItem.count > 0) {
                     findItem.count--;
@@ -44,10 +44,10 @@ const cartSlice = createSlice({
             }
         },
         removeItems(state, action) {
-            const removedItem = state.items.find(obj => obj.id === action.payload);
+            const removedItem = state.items.find(obj => obj._id === action.payload);
             if (removedItem) {
                 state.totalPrice -= removedItem.price * removedItem.count;
-                state.items = state.items.filter(obj => obj.id !== action.payload);
+                state.items = state.items.filter(obj => obj._id !== action.payload);
             }
         },
         setSuccessData(state,action) {

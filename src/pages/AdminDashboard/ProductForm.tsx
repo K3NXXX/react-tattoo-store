@@ -13,7 +13,7 @@ const ProductForm: React.FC = () => {
     handleSubmit: handleProductSubmit,
     reset: resetProductForm,
     formState: { errors },
-  } = useForm<IProduct>({ mode: "onChange" }); // Валідація при зміні
+  } = useForm<IProduct>({ mode: "onChange" });
 
   const { mutate: createProduct } = useMutation({
     mutationKey: ["createProduct"],

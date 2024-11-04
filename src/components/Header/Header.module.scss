@@ -30,7 +30,7 @@
 	}
 	.phone__number {
 		color: #faf6f2;
-		font-family: Jost;
+		font-family: Jost, sans-serif;
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
@@ -41,7 +41,7 @@
 	span {
 		a {
 			color: #d0d0d0;
-			font-family: Jost;
+			font-family: Jost, sans-serif;
 			font-size: 12px;
 			font-style: normal;
 			font-weight: 400;
@@ -68,7 +68,7 @@
 	}
 	a {
 		color: #faf6f2;
-		font-family: Jost;
+		font-family: Jost, sans-serif;
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
@@ -77,7 +77,7 @@
 }
 .catalogSpecial {
 	color: var(--txt-white, #faf6f2);
-	font-family: Jost;
+	font-family: Jost, sans-serif;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 400;
@@ -89,7 +89,7 @@
 	align-items: center;
 	.logo__name {
 		color: #bb8c5f;
-		font-family: Forum;
+		font-family: Forum, sans-serif;
 		font-size: 30px;
 		font-style: normal;
 		font-weight: 400;
@@ -100,7 +100,7 @@
 	}
 	span {
 		color: var(--txt-orange, #bb8c5f);
-		font-family: Jost;
+		font-family: Jost, sans-serif;
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 300;
@@ -109,25 +109,29 @@
 		text-transform: uppercase;
 	}
 }
+
+.count {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+
+	color: #FAF6F2;
+	background-color: #BB8C5F;
+	padding: 1px 5px;
+}
+
 .right {
 	display: flex;
 	align-items: center;
 	gap: 0 20px;
+
 	.shop__bin {
 		display: flex;
-		min-height: 28px;
+		min-height: 24px;
 		align-items: center;
 		position: relative;
 	}
-	.shop__bin:first-child {
-		color: #faf6f2;
-		font-family: Jost;
-		font-size: 15px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 150%;
-		margin-right: 5px;
-	}
+
 	.bin__number {
 		background-color: #bb8c5f;
 		padding: 0 5px;
@@ -135,29 +139,18 @@
 		right: -14px;
 		top: -11px;
 	}
+
 	.accountImg {
 		cursor: pointer;
 	}
 }
+
 .header__favLink {
+	position: relative;
+
 	display: flex;
 	min-height: 28px;
 	align-items: center;
-	position: relative;
-	span {
-		background-color: #bb8c5f;
-		padding: 0 5px;
-		position: absolute;
-		right: -18px;
-		top: -11px;
-		color: #faf6f2;
-		font-family: Jost;
-		font-size: 15px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 150%;
-		margin-right: 5px;
-	}
 }
 .bottom {
 	padding: 13px 0;
@@ -186,7 +179,7 @@
 	padding: 30px 0;
 	li a {
 		color: #faf6f2;
-		font-family: Jost;
+		font-family: Jost, sans-serif;
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 400;
@@ -206,7 +199,7 @@
 	position: relative;
 	p {
 		color: #faf6f2;
-		font-family: Jost;
+		font-family: Jost, sans-serif;
 		font-size: 25px;
 		font-style: normal;
 		font-weight: 400;
@@ -235,11 +228,11 @@
 	color: #faf6f2;
 	letter-spacing: 1px;
 	font-size: 15px;
-	font-family: Jost;
+	font-family: Jost, sans-serif;
 	width: 435px;
 	&::placeholder {
 		color: #636b78;
-		font-family: Jost;
+		font-family: Jost, sans-serif;
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
@@ -257,7 +250,7 @@
 	li {
 		a {
 			color: #faf6f2;
-			font-family: Jost;
+			font-family: Jost, sans-serif;
 			font-size: 17px;
 			font-style: normal;
 			font-weight: 400;
@@ -339,12 +332,12 @@
 		@media (max-width: 438px) {
 			flex-direction: column;
 			align-items: center;
-			gap: 10px 0px;
+			gap: 10px 0;
 			margin-bottom: 10px;
 		}
 		.authWay {
 			color: #494343;
-			font-family: Roboto;
+			font-family: Roboto, sans-serif;
 			font-size: 24px;
 			font-style: normal;
 			font-weight: 500;
@@ -362,7 +355,7 @@
 
 		.active {
 			color: #bb8c5f;
-            font-family: Roboto;
+            font-family: Roboto, sans-serif;
 			font-size: 24px;
 			font-style: normal;
 			font-weight: 500;
@@ -414,7 +407,7 @@
 			bottom: 35px;
 			color: #faf6f2;
 			text-align: center;
-			font-family: Jost;
+			font-family: Jost, sans-serif;
 			font-size: 20px;
 			font-style: normal;
 			font-weight: 400;
@@ -427,7 +420,6 @@
 			width: 275px;
 			height: 70px;
 			background-color: transparent;
-			padding: 10px;
 			margin-top: 150px;
 			transition: 0.3s ease;
 			@media (max-width: 438px) {
@@ -462,7 +454,7 @@
 	.menu {
 		display: flex;
 		color: #faf6f2;
-		font-family: Jost;
+		font-family: Jost, sans-serif;
 		font-size: 25px;
 		font-style: normal;
 		font-weight: 400;
@@ -521,7 +513,7 @@
 		}
 		p {
 			color: #636b78;
-			font-family: Jost;
+			font-family: Jost, sans-serif;
 			font-size: 17px;
 			font-style: normal;
 			font-weight: 400;
@@ -533,7 +525,7 @@
 
 		a {
 			color: #faf6f2;
-			font-family: Jost;
+			font-family: Jost, sans-serif;
 			font-size: 20px;
 			font-style: normal;
 			font-weight: 400;
@@ -571,7 +563,7 @@
 	}
 	.phone__menu_list li a {
 		color: #faf6f2;
-		font-family: Jost;
+		font-family: Jost, sans-serif;
 		font-size: 20px;
 		font-style: normal;
 		font-weight: 400;
@@ -599,7 +591,7 @@
 		position: relative;
 		li {
 			color: #faf6f2;
-			font-family: Jost;
+			font-family: Jost, sans-serif;
 			font-size: 17px;
 			font-style: normal;
 			font-weight: 400;

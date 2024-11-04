@@ -19,14 +19,14 @@
 				margin-bottom: 50px;
 				.description__title {
 					color: rgb(62, 66, 75);
-					font-family: Jost;
+					font-family: Jost, sans-serif;
 					font-size: 25px;
 					font-weight: 700;
 					margin-bottom: 20px;
 				}
 				.description__text {
 					color: rgb(62, 66, 75);
-					font-family: Jost;
+					font-family: Jost, sans-serif;
 					font-size: 17px;
 					font-weight: 400;
 					line-height: 140%;
@@ -36,7 +36,7 @@
 		.right {
 			.product__title {
 				color: rgb(62, 66, 75);
-				font-family: Jost;
+				font-family: Jost, sans-serif;
 				font-size: 30px;
 				font-weight: 700;
 				line-height: 115%;
@@ -47,11 +47,11 @@
 			}
 			.product__price {
 				color: rgb(187, 140, 95);
-				font-family: Jost;
+				font-family: Jost, sans-serif;
 				font-size: 24px;
 				font-weight: 700;
 				line-height: 130%;
-				letter-spacing: 0%;
+				letter-spacing: 0;
 				margin-bottom: 50px;
 			}
 			.addToCart {
@@ -81,7 +81,7 @@
 						align-items: center;
 						color: #faf6f2;
 						text-align: center;
-						font-family: Jost;
+						font-family: Jost, sans-serif;
 						font-size: 20px;
 						font-style: normal;
 						font-weight: 400;
@@ -90,6 +90,7 @@
 						background-repeat: no-repeat;
 						background-position: center;
 						background-size: contain;
+						background-color: transparent;
 						width: 332px;
 						height: 70px;
 						transition: 0.3s ease;
@@ -106,14 +107,14 @@
 				margin-bottom: 50px;
 				.delivery__title {
 					color: rgb(62, 66, 75);
-					font-family: Jost;
+					font-family: Jost, sans-serif;
 					font-size: 25px;
 					font-weight: 700;
 					margin-bottom: 20px;
 				}
 				.delivery__text {
 					color: rgb(62, 66, 75);
-					font-family: Jost;
+					font-family: Jost, sans-serif;
 					font-size: 17px;
 					font-weight: 400;
 					line-height: 140%;
