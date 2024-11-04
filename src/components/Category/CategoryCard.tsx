@@ -101,17 +101,19 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ good }) => {
         ? parseFloat(good.price.replace(/\s+/g, ""))
         : good.price;
 
-    const item: CartItemType = {
-      _id: good._id,
-      image: good.image,
-      name: good.name,
-      count: 0,
-      price: price,
-    };
-    dispatch(addItems(item));
-    dispatch(setBinCount(binCount + 1));
-    dispatch(setModal(true));
-  };
+		const item: CartItemType = {
+			id: +good._id,
+			image: good.image,
+			name: good.name,
+			count: 1,
+			price: parseFloat(good.price),
+		}
+		e.preventDefault()
+			//@ts-ignore
+		dispatch(addItems(item))
+		dispatch(setBinCount(binCount + 1))
+		dispatch(setModal(true))
+	}
 
   const toggleFavorite = async (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();

@@ -14,13 +14,13 @@ type CartItemProps = {
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const dispatch = useDispatch();
   const onClickPlusItem = (): void => {
-    dispatch(addItems(item));
-  };
+    dispatch(addItems({ id: String(item.id), count: 1 }));
+}
   const onClickMinusItem = (): void => {
-    dispatch(minusItems(item._id));
+    dispatch(minusItems(item.id));
   };
   const onClickRemoveItem = (): void => {
-    dispatch(removeItems(item._id));
+    dispatch(removeItems(item.id));
   };
 
   return (

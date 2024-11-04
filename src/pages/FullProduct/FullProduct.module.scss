@@ -12,7 +12,6 @@
 		.left {
 			.img__wrapper img {
 				height: 480px;
-
 				margin-bottom: 50px;
 			}
 			.description {
@@ -64,12 +63,19 @@
 						display: flex;
 						gap: 0 25px;
 						align-items: center;
+				
 						svg {
 							cursor: pointer;
 						}
 						.count__number {
 							border: 1.5px solid #bb8c5f;
 							padding: 5px 12px;
+							width: 50px;
+							height: 50px;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							user-select: none;
 						}
 					}
 				}
@@ -94,6 +100,7 @@
 						width: 332px;
 						height: 70px;
 						transition: 0.3s ease;
+						user-select: none;
 						&:hover {
 							opacity: 0.9;
 						}
