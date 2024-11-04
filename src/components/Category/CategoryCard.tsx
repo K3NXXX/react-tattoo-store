@@ -95,6 +95,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ good }) => {
 
 	const handleAddToCart = (event:React.MouseEvent<HTMLSpanElement>): void => {
 		const item: CartItemType = {
+      //@ts-ignore
 			id: good._id,
 			image: good.image,
 			name: good.name,
