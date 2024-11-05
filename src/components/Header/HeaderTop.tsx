@@ -22,9 +22,10 @@ const HeaderTop: React.FC = () => {
   const jwtToken = localStorage.getItem("jwt");
   const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}");
 
-  const favoritesCount = useSelector(
-    (state: RootState) => state.favorites?.favorites?.length,
-  );
+  // const favoritesCount = useSelector(
+  //   (state: RootState) => state.favorites?.favorites?.length,
+  // );
+
   const { items, totalPrice } = useSelector(
     (state: RootState) => state.cartSlice,
   );
@@ -138,11 +139,7 @@ const HeaderTop: React.FC = () => {
         </div>
         <div className={style.right}>
           <Link to="/react-tattoo-store/cart" className={style.shop__bin}>
-            {userData?.role === "admin" ? (
-              ""
-            ) : (
-              <img src={shop_bin} alt="shop bin" />
-            )}
+            <img src={shop_bin} alt="shop bin" />
 
             {totalCount > 0 ? (
               <span className={style.count}>{totalCount}</span>
@@ -154,11 +151,8 @@ const HeaderTop: React.FC = () => {
             to="/react-tattoo-store/favorites"
             className={style.header__favLink}
           >
-            {userData?.role === "admin" ? (
-              ""
-            ) : (
-              <img src={favourite} alt="favourite" />
-            )}
+            <img src={favourite} alt="favourite" />
+
             {userData?.favorites?.length > 0 ? (
               <span className={style.count}>{userData?.favorites?.length}</span>
             ) : (
