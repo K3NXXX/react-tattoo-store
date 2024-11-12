@@ -14,13 +14,7 @@ const HeaderBottom: React.FC = () => {
 		'Тату фарби',
 	]
 
-	const headerCategoryList = [
-		'Промокоди',
-		'Знижки',
-		'Допомога',
-		'Про нас',
-		'Контакти',
-	]
+	
 
 	useEffect(() => {
 		document.body.addEventListener('click', event => {
@@ -67,17 +61,6 @@ const HeaderBottom: React.FC = () => {
 								</ul>
 							)}
 						</div>
-					</div>
-					<div className={style.bottom__right}>
-						<ul className={style.right__list}>
-							{headerCategoryList.map((category, index) => {
-								return (
-									<li key={index}>
-										<Link to='*'>{category}</Link>
-									</li>
-								)
-							})}
-						</ul>
 					</div>
 				</div>
 	)
