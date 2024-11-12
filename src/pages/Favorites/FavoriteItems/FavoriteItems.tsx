@@ -1,11 +1,11 @@
 import FavoriteItem, { FavoriteItemProps } from "../FavoriteItem/FavoriteItem";
 import style from "./FavoriteItems.module.scss";
 import { productsService } from "../../../services/products.service";
-import { useState, useEffect } from "react"; // Added useEffect for localFavorites management
+import { useState, useEffect } from "react";
 import { IUser } from "../../../types/auth.type";
 
 export interface FavoriteItemComponentProps {
-  item: FavoriteItemProps; // Add the mutation prop here
+  item: FavoriteItemProps;
 }
 
 const FavoriteItems: React.FC = () => {
@@ -36,8 +36,6 @@ const FavoriteItems: React.FC = () => {
     fetchFavorites();
   }, []);
 
-  console.log(favorites);
-
   if (isLoading)
     return (
       <div className={style.loading}>
@@ -47,14 +45,14 @@ const FavoriteItems: React.FC = () => {
         <p>Завантаження улюблених товарів...</p>
       </div>
     );
-  // if (isError)
-  //   return <div className={style.empty}>У вас ще немає улюблених товарів.</div>;
+  if (isError)
+    return <div className={style.empty}>У вас ще немає улюблених товарів.</div>;
 
   return (
     <div className={style.all}>
       <div className={style.line}></div>
 
-      <div className={style.goods}>
+      <div className={style.favorites}>
         {localFavorites?.length > 0 && favorites ? (
           favorites?.map((item: FavoriteItemProps) => (
             <FavoriteItem key={item._id} item={item} />

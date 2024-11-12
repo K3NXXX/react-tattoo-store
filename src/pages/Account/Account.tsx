@@ -26,11 +26,7 @@ const Account: React.FC = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("userData");
-    localStorage.removeItem("addressData");
-    localStorage.removeItem("cartItems");
-    localStorage.removeItem("cartTotalPrice");
+    localStorage.clear();
     navigate("/react-tattoo-store");
     window.location.reload();
     authService.logout();
