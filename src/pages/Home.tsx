@@ -60,7 +60,7 @@ const Home: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <main>
+    <section>
       <Intro />
       <Category
         activeCategory={activeCategory}
@@ -73,7 +73,7 @@ const Home: React.FC = () => {
       <About />
       <Feedback />
       <Subscribe />
-    </main>
+    </section>
   );
 };
 

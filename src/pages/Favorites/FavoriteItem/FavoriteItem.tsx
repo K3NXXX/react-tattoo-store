@@ -61,7 +61,7 @@ const FavoriteItem: React.FC<FavoriteItemComponentProps> = ({ item }) => {
   return (
     <>
       <Link to={`/react-tattoo-store/product/${item._id}`}>
-        <div className={style.categoryCard}>
+        <div className={style.favoriteCard}>
           <div
             className={style.bg}
             style={{ backgroundImage: `url(${item.image})` }}
@@ -77,19 +77,19 @@ const FavoriteItem: React.FC<FavoriteItemComponentProps> = ({ item }) => {
         </div>
       </Link>
 
-      <div className={style.categoryCard__phone}>
-        <Link to={`/react-tattoo-store/product/${item._id}`}>
-          <div
-            className={style.bg}
-            style={{ backgroundImage: `url(${item.image})` }}
-          ></div>
-          <div className={style.card__info}>
-            <p className={style.info__name}>{item.name}</p>
-            <Rating name="read-only" value={item.rating} readOnly />
-            <p className={style.info__price}>{item.price} ₴</p>
-          </div>
-        </Link>
-      </div>
+      {/*<div className={style.favoriteCard__phone}>*/}
+      {/*  <Link to={`/react-tattoo-store/product/${item._id}`}>*/}
+      {/*    <div*/}
+      {/*      className={style.bg}*/}
+      {/*      style={{ backgroundImage: `url(${item.image})` }}*/}
+      {/*    ></div>*/}
+      {/*    <div className={style.card__info}>*/}
+      {/*      <p className={style.info__name}>{item.name}</p>*/}
+      {/*      <Rating name="read-only" value={item.rating} readOnly />*/}
+      {/*      <p className={style.info__price}>{item.price} ₴</p>*/}
+      {/*    </div>*/}
+      {/*  </Link>*/}
+      {/*</div>*/}
     </>
   );
 };

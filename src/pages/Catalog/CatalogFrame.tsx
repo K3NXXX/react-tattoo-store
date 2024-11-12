@@ -13,7 +13,7 @@ import style from "./CatalogFrame.module.scss"
 const CatalogFrame: React.FC = () => {
     const {id} = useParams<{id: string}>()
     const [catalog, setCatalog] = useState<catalogListType>();
-    const [minPrice, setMinPrice] = useState<string>("100")
+    const [minPrice, setMinPrice] = useState<string>("0")
     const [maxPrice, setMaxPrice] = useState<string>("50000")
     const [filterButton, setFilterButton] = useState<string>("")
     const [activeBtn, setActiveBtn] = useState<number>()
@@ -48,7 +48,9 @@ const CatalogFrame: React.FC = () => {
     }, [id,dispatch])
 
     const catalogGoods = useSelector((state: RootState) => state.categorySlice.catalogGoods)
+    console.log(catalogGoods)
     const filteredCatalogGoods = catalogGoods.filter((good: CategoryItem) => good.category === `${catalog && catalog.filterName}`)
+   
     const filteredCatalogGoodsPrice = filteredCatalogGoods.filter((filteredGood: CategoryItem) =>  parseFloat(filteredGood.price) <= parseFloat(maxPrice) && parseFloat(filteredGood.price) >= parseFloat(minPrice))
     dispatch(setNewGood(false))
     useEffect(() => {
@@ -56,7 +58,7 @@ const CatalogFrame: React.FC = () => {
     }, [dispatch])
 
     useEffect(() => {
-        axios.get(`https://64cc9b3a2eafdcdc851a0362.mockapi.io/goods?search=${filterButton}`)
+        axios.get(`https://tattoo-shop-801cb78430a8.herokuapp.com/products/sort?forWho=${filterButton}`)
         .then(res => {
             dispatch(setCatalogGoods(res.data))
         })

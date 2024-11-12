@@ -26,11 +26,7 @@ const Account: React.FC = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("userData");
-    localStorage.removeItem("addressData");
-    localStorage.removeItem("cartItems");
-    localStorage.removeItem("cartTotalPrice");
+    localStorage.clear();
     navigate("/react-tattoo-store");
     window.location.reload();
     authService.logout();
@@ -44,7 +40,8 @@ const Account: React.FC = () => {
           <Link to="/react-tattoo-shop/account"> Особистий кабінет</Link>
         </div>
         <h2 className={style.title}>Особистий кабінет</h2>
-        <div className={style.userInfo}>
+        <div className={style.content}>
+              <div className={style.userInfo}>
           <div className={style.column}>
             <input
               type="file"
@@ -80,19 +77,7 @@ const Account: React.FC = () => {
             </div>
           </div>
         </div>
-        <svg
-          className={style.line}
-          xmlns="http://www.w3.org/2000/svg"
-          width="800"
-          height="6"
-          viewBox="0 0 800 6"
-          fill="none"
-        >
-          <path
-            d="M5 2.5L-2.52368e-07 0.113249L2.52368e-07 5.88675L5 3.5L5 2.5ZM795 3.49993L800 5.88668L800 0.113179L795 2.49993L795 3.49993ZM4.5 3.5L795.5 3.49993L795.5 2.49993L4.5 2.5L4.5 3.5Z"
-            fill="#D0D0D0"
-          />
-        </svg>
+        </div>
         <ReceiverData isAccount={true} />
         <p className={style.cart}>Товари в корзині</p>
         <CartGoods />

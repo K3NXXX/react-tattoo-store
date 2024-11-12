@@ -19,6 +19,7 @@ import ProtectedRoutes from "./routes/ProtectedRoutes";
 import { authService } from "./services/auth.service";
 import FullProduct from "./pages/FullProduct/FullProduct";
 import Favorites from "./pages/Favorites/Favorites";
+import style from "../src/scss/global.module.scss";
 
 const App: React.FC = () => {
   const modal = useSelector((state: RootState) => state.categorySlice.modal);
@@ -37,9 +38,11 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="App">
-      <Header />
-      <main className="main">
+    <div className={style.App}>
+      <header>
+        <Header />
+      </header>
+      <main className={style.main}>
         <Routes>
           <Route path="*" element={<PageNotFound />} />
           <Route path="/react-tattoo-store" element={<Home />} />
@@ -71,7 +74,9 @@ const App: React.FC = () => {
           />
         </Routes>
       </main>
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
       {modal && <PurchaseModal />}
       <ToastContainer position="bottom-right" />
     </div>

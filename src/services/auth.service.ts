@@ -21,7 +21,6 @@ class AuthService {
 			`${this.BASE_URL}auth/login`,
 			formData
 		)
-		console.log('logindata', data)
 		if (data.token) {
 			window.localStorage.setItem('jwt', data.token)
 		}
