@@ -52,25 +52,16 @@
         margin-top: 30px;
     }
 }
-.line {
-    margin: 50px 0 40px 0 ;
-    @media (max-width:830px) {
-        display: none;
-    }
-}
+
 .userInfo {
     margin-top: 20px;
     background-color: #F5F5F5;
-    height: 250px;                                                                                                                  
     padding: 40px;
     margin-bottom: 30px;
     display: grid;
     grid-template-columns: repeat(2,400px);
-    @media (max-width:1260px) {
-        max-width: 804px;
-        grid-template-columns: repeat(2,350px);
-    }
-    @media (max-width:830px) {
+  
+    @media (max-width:910px) {
         grid-template-columns: repeat(1,350px);
         height: 400px;   
         justify-content: center;
@@ -149,6 +140,7 @@
                 transition: all 0.3s ease;
                 text-align: center;
                 color: #3E424B;
+                width: 150px;
                 &:hover {
                     background-color: #BB8C5F;
                     color: white;

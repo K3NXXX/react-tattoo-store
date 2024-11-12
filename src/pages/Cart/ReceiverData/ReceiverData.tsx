@@ -87,7 +87,7 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
               })}
               type="text"
               placeholder="Іванов Іван"
-              value={name}
+              value={isAccount ? name : ""}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
