@@ -23,6 +23,15 @@ type CategoryCardProps = {
 const CategoryCard: React.FC<CategoryCardProps> = ({ good }) => {
   const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}");
 
+  const item: CartItemType = {
+    //@ts-ignore
+    id: good._id,
+    image: good.image,
+    name: good.name,
+    count: 1,
+    price: parseFloat(good.price),
+  };
+
   const [isFavorite, setIsFavorite] = useState<boolean>(
     userData?.favorites?.includes(good._id),
   );
@@ -93,21 +102,46 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ good }) => {
     fetchRating();
   }, [good._id]);
 
-	const handleAddToCart = (event:React.MouseEvent<HTMLSpanElement>): void => {
-		const item: CartItemType = {
-      //@ts-ignore
-			id: good._id,
-			image: good.image,
-			name: good.name,
-			count: 1,
-			price: parseFloat(good.price),
-		}
-		event.preventDefault()
-			//@ts-ignore
-		dispatch(addItems(item))
-		dispatch(setBinCount(binCount + 1))
-		dispatch(setModal(true))
-	}
+  const addToCartMutation = useMutation({
+    mutationFn: async ({
+      productId,
+      quantity,
+    }: {
+      productId: string;
+      quantity: number;
+    }): Promise<void> => {
+      await productsService.addToCart(productId, quantity);
+      // @ts-ignore
+      userData?.cart?.push({ product: productId, quantity });
+    },
+    onSuccess: () => {
+      console.log("Item successfully added to cart");
+
+      // Update cart count and state in the UI
+      dispatch(setBinCount(binCount + 1));
+      dispatch(setModal(true));
+    },
+    onError: (error) => {
+      console.error("Error adding item to cart:", error);
+      toast.error("Error adding item to cart. Please try again.");
+    },
+  });
+
+  const handleAddToCart = (event: React.MouseEvent<HTMLSpanElement>): void => {
+    event.preventDefault();
+
+    addToCartMutation.mutate({
+      productId: good._id,
+      quantity: item.count,
+    });
+
+    userData?.cart?.push();
+
+    //@ts-ignore
+    dispatch(addItems(item));
+    // dispatch(setBinCount(binCount + 1));
+    // dispatch(setModal(true));
+  };
 
   const toggleFavorite = async (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();

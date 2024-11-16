@@ -6,6 +6,7 @@ import { IUser } from "../../types/auth.type";
 import CartGoods from "../Cart/CartGoods/CartGoods";
 import ReceiverData from "../Cart/ReceiverData/ReceiverData";
 import style from "./Account.module.scss";
+import Orders from "../../components/Orders/Orders/Orders";
 
 const Account: React.FC = () => {
   const navigate = useNavigate();
@@ -41,46 +42,46 @@ const Account: React.FC = () => {
         </div>
         <h2 className={style.title}>Особистий кабінет</h2>
         <div className={style.content}>
-              <div className={style.userInfo}>
-          <div className={style.column}>
-            <input
-              type="file"
-              accept="image/*"
-              id="avatar-input"
-              style={{ display: "none" }}
-              onChange={handleAvatarUpload}
-            />
-            <label htmlFor="avatar-input">
-              <img className={style.avatar} src={avatar} alt="avatar" />
-            </label>
-            <div className={style.online}>
-              <div>
-                <p className={style.name}>{userData?.name}</p>
-              </div>
-              <button onClick={() => handleLogout()} className={style.exit}>
-                Вийти
-              </button>
-            </div>
-          </div>
-          <div className={style.column}>
-            <div className={style.online}>
-              <div className={style.contacts}>
+          <div className={style.userInfo}>
+            <div className={style.column}>
+              <input
+                type="file"
+                accept="image/*"
+                id="avatar-input"
+                style={{ display: "none" }}
+                onChange={handleAvatarUpload}
+              />
+              <label htmlFor="avatar-input">
+                <img className={style.avatar} src={avatar} alt="avatar" />
+              </label>
+              <div className={style.online}>
                 <div>
-                  <p className={style.contactsData}>Ел. пошта:</p>
-                  <p>{userData.email}</p>
+                  <p className={style.name}>{userData?.name}</p>
                 </div>
-                <div>
-                  <p className={style.contactsData}>Номер тел.:</p>
-                  <p>{userData.phone_number}</p>
+                <button onClick={() => handleLogout()} className={style.exit}>
+                  Вийти
+                </button>
+              </div>
+            </div>
+            <div className={style.column}>
+              <div className={style.online}>
+                <div className={style.contacts}>
+                  <div>
+                    <p className={style.contactsData}>Ел. пошта:</p>
+                    <p>{userData.email}</p>
+                  </div>
+                  <div>
+                    <p className={style.contactsData}>Номер тел.:</p>
+                    <p>{userData.phone_number}</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
-        <ReceiverData isAccount={true} />
-        <p className={style.cart}>Товари в корзині</p>
-        <CartGoods />
+        <p className={style.cart}>Мої замовлення</p>
+        {/*<CartGoods />*/}
+        <Orders />
       </div>
     </section>
   );

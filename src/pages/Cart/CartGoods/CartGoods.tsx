@@ -1,10 +1,24 @@
 import CartItem from "../CartItem/CartItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { CartItemType } from "../../../redux/slices/cartSlice";
 import style from "./CartGoods.module.scss";
+import { IUser } from "../../../types/auth.type";
+
+export type CartItemType = {
+  id: string;
+  product: {
+    _id: string;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+  };
+  quantity: number;
+};
 
 const CartGoods: React.FC = () => {
+  const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}");
+  console.log(userData);
   const { items } = useSelector((state: RootState) => state.cartSlice);
 
   return (
@@ -32,9 +46,9 @@ const CartGoods: React.FC = () => {
           />
         </svg>
         <div className={style.goods}>
-          {items.length > 0 ? (
-            items.map((item: CartItemType) => {
-              return <CartItem key={item.id} item={item} />;
+          {userData.cart?.length > 0 ? (
+            userData.cart?.map((item: CartItemType) => {
+              return <CartItem key={item.product._id} item={item} />;
             })
           ) : (
             <div className={style.empty}>Корзина пуста</div>

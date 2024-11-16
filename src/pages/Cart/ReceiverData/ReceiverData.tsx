@@ -57,10 +57,20 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
         _id: userData?._id || "",
         phone_number: phone,
         favorites: userData?.favorites || [],
+        cart: userData?.cart || [],
+        orders: userData?.orders || [],
         email,
       }),
     );
-  }, [name, phone, email, userData?.favorites, userData?._id]);
+  }, [
+    userData?._id,
+    name,
+    phone,
+    email,
+    userData?.favorites,
+    userData?.orders,
+    userData?.cart,
+  ]);
 
   useEffect(() => {
     localStorage.setItem(

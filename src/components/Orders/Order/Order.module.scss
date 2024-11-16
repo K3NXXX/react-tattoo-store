@@ -1,0 +1,129 @@
+.good {
+    user-select: none;
+    display: grid;
+    grid-template-columns: 103px 192px 51px 120px 64px 15px;
+    gap: 0 50px;
+    align-items: center;
+    max-width: 192px;
+    color: #3E424B;
+    font-family: Jost, sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; 
+    .goodImg {
+        max-width: 103px;
+    }
+   
+    .name {
+        min-width: 192px;
+        max-width: 192px;
+        margin-left: -20px;
+       
+    }
+    .price {
+        justify-self: center;
+        
+    }
+    .quantity {
+        display: flex;
+        gap: 0 25px;
+        align-items: center;
+        svg {
+            cursor: pointer;
+        }
+        .count__number {
+            border: 1.5px solid  #bb8c5f;
+            padding: 5px 12px;
+        }
+    }
+    .goodTotalPrice {
+        justify-self: center;
+    }
+    .deleteGood {
+        margin-right: 0;
+        cursor: pointer;
+    }
+
+}
+.good__phone {
+    display: none;
+}
+@media (max-width:830px) {
+    .good {
+        display: none;
+    }
+    .good__phone {
+        display: grid;
+        align-items: center;
+        color: #3E424B;
+        font-family: Jost, sans-serif;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; 
+        border-bottom: #D0D0D0 2px solid;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        .good__phone_top {
+            display: flex;
+            align-items: center;
+            gap: 0 20px;
+            margin-bottom: 20px;
+            .goodImg {
+                max-width: 200px;
+                @media (max-width:500px) {
+                    max-width: 100px;
+                }
+            }
+            .nameAndPrice {
+                @media (max-width:500px) {
+                    margin-top: 20px;
+                }
+                
+                .name {
+                    max-width: 210px;
+                    color:#3E424B;
+                    font-family: Jost, sans-serif;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 140%; 
+                    margin-bottom: 17px;
+                    @media (max-width:500px) {
+                        max-width: 130px;
+                    }
+                }
+                .price {
+                    color: #636B78;
+                    font-family: Jost, sans-serif;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 140%; 
+                }
+            }
+        }
+        .good__phone_bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .quantity {
+                display: flex;
+                gap: 0 25px;
+                align-items: center;
+                margin-left: 40px;
+                @media (max-width:500px) {
+                    margin-left: 0;
+                }
+                svg {
+                    cursor: pointer;
+                }
+                .count__number {
+                    border: 1.5px solid  #bb8c5f;
+                    padding: 5px 12px;
+                }
+            }
+        }
+    }
+}

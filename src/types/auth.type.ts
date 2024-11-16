@@ -8,5 +8,6 @@ export interface IUser {
   password: string;
   role: string;
   cart: [];
+  orders: [];
   favorites: string[];
 }
