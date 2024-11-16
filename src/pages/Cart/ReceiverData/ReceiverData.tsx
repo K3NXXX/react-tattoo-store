@@ -41,7 +41,6 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
   const onSubmit = (data: any): void => {
     dispatch(setSuccessData(true));
     reset();
-    console.log("data", data);
   };
 
   useEffect(() => {
@@ -70,14 +69,9 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
   }, [city, street, flat, entrance, floor, intercom]);
 
   return (
-    <div className={style.usersData__form}>
+    <form   onSubmit={handleSubmit(onSubmit)} className={style.usersData__form}>
       <div className={style.form__top}>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className={style.receiver__info}
-        >
           <p>01. Інформація про отримувача</p>
-        </form>
         <div className={style.top__row}>
           <div className={style.column}>
             <label>Прізвище та ім'я</label>
@@ -87,7 +81,7 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
               })}
               type="text"
               placeholder="Іванов Іван"
-              value={isAccount ? name : ""}
+              defaultValue={isAccount ? name : ""}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -201,7 +195,7 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
         {isEmpty ? "Додайте товар, щоб оформити замовлення" : ""}
       </div>
       {isAccount ? "" : <button disabled={isEmpty}>Оформити замовлення</button>}
-    </div>
+    </form>
   );
 };
 
