@@ -22,34 +22,14 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItems(state, action: PayloadAction<{ id: string; count?: number }>) {
-      //@ts-ignore
-      const findItem = state.items.find((obj) => obj.id === action.payload.id);
-      const countToAdd = action.payload.count || 1;
-
-      if (findItem) {
-        findItem.count += countToAdd;
-      } else {
-        const newItem = { ...action.payload, count: countToAdd };
-        //@ts-ignore
-        state.items.push(newItem);
-      }
-
-      state.totalPrice = state.items.reduce(
-        (sum: number, obj) => obj.price * obj.count + sum,
-        0,
-      );
+    addItems(state, action) {
+   
     },
 
     minusItems(state, action) {
-      const findItem = state.items.find((obj) => obj.id === action.payload);
-      if (findItem) {
-        if (findItem.count > 0) {
-          findItem.count--;
-          state.totalPrice -= findItem.price;
-        }
-      }
+
     },
+    
     removeItems(state, action) {
       const removedItem = state.items.find((obj) => obj.id === action.payload);
       if (removedItem) {

@@ -1,8 +1,8 @@
 import CartItem from "../CartItem/CartItem";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
 import style from "./CartGoods.module.scss";
-import { IUser } from "../../../types/auth.type";
+import { useQuery } from '@tanstack/react-query'
+import { productsService } from '../../../services/products.service'
+import { CircularProgress } from '@mui/material'
 
 export type CartItemType = {
   id: string;
@@ -17,9 +17,21 @@ export type CartItemType = {
 };
 
 const CartGoods: React.FC = () => {
-  const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}");
-  console.log(userData);
-  const { items } = useSelector((state: RootState) => state.cartSlice);
+
+  const { data: cartGoods, isLoading } = useQuery({
+    queryKey: ["cartGoods"],
+    queryFn: () => productsService.getCartGoods(),
+  });
+
+  if (isLoading) {
+    <CircularProgress/>
+  }
+
+  if (!cartGoods || !cartGoods.cart || cartGoods.cart.length === 0) {
+    return <div className={style.empty}>Ваш кошик порожній</div>;
+  }
+
+  console.log("cartGoods", cartGoods)
 
   return (
     <div className={style.left}>
@@ -46,8 +58,8 @@ const CartGoods: React.FC = () => {
           />
         </svg>
         <div className={style.goods}>
-          {userData.cart?.length > 0 ? (
-            userData.cart?.map((item: CartItemType) => {
+          {cartGoods.cart?.length > 0 ? (
+            cartGoods.cart?.map((item: CartItemType) => {
               return <CartItem key={item.product._id} item={item} />;
             })
           ) : (

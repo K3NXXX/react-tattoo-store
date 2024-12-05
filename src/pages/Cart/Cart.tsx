@@ -9,9 +9,9 @@ import CartGoods from "./CartGoods/CartGoods";
 import ReceiverData from "./ReceiverData/ReceiverData";
 import { IUser } from "../../types/auth.type";
 
+
 const Cart: React.FC = () => {
   const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}");
-
   const { items, totalPrice } = useSelector(
     (state: RootState) => state.cartSlice,
   );

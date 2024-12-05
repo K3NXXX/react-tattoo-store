@@ -1,9 +1,9 @@
 import { CircularProgress, Rating } from '@mui/material'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { addItems, CartItemType } from '../../redux/slices/cartSlice'
+import { CartItemType } from '../../redux/slices/cartSlice'
 import { setBinCount, setModal } from '../../redux/slices/categorySlice'
 import { RootState } from '../../redux/store'
 import { productsService } from '../../services/products.service'
@@ -31,6 +31,13 @@ const FullProduct: React.FC = () => {
 		queryKey: ['getRating'],
 		queryFn: () => productsService.getRating(id as string),
 		enabled: !!id,
+	})
+
+	const { mutate: addToCart } = useMutation({
+		mutationKey: ['addGoodToCart'],
+		mutationFn: (productData: CartItemType) =>
+			//@ts-ignore
+			productsService.addToCart(productData.id, quantity),
 	})
 
 	useEffect(() => {
@@ -71,8 +78,7 @@ const FullProduct: React.FC = () => {
 				count: quantity,
 				price: parseFloat(good.price),
 			}
-			//@ts-ignore
-			dispatch(addItems(item))
+			addToCart(item)
 			dispatch(setBinCount(binCount + quantity))
 			dispatch(setModal(true))
 		}

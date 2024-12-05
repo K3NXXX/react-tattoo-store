@@ -91,6 +91,11 @@ class ProductsService {
 
     return data;
   }
+
+  async getCartGoods() {
+    const { data } = await axios.get(`${this.BASE_URL}/user/cart/get`);
+    return data;
+  }
 }
 
 export const productsService = new ProductsService();

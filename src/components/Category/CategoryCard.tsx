@@ -73,14 +73,10 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ good }) => {
       setIsFavorite(updatedFavorites?.includes(id));
       dispatch(setFavorites(updatedFavorites));
     },
-    onError: (error) => {
-      console.log(userData);
+    onError: () => {
       if (userData) {
         toast.error("Увійдіть, щоб додати товар в улюблене.");
-      } else {
-        // toast.error(`Error updating favorite status: ${error}`);
-      }
-      console.error("Error updating favorites:", error);
+      } 
     },
   });
 
@@ -115,15 +111,14 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ good }) => {
       userData?.cart?.push({ product: productId, quantity });
     },
     onSuccess: () => {
-      console.log("Item successfully added to cart");
+      console.log("Товар доданий в корзину");
 
-      // Update cart count and state in the UI
-      dispatch(setBinCount(binCount + 1));
+
       dispatch(setModal(true));
     },
     onError: (error) => {
       console.error("Error adding item to cart:", error);
-      toast.error("Error adding item to cart. Please try again.");
+      toast.error("Сталася помилка при додаванні товара в корзину.");
     },
   });
 

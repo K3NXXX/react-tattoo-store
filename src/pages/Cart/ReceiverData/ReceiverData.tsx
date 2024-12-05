@@ -5,6 +5,9 @@ import { setSuccessData } from "../../../redux/slices/cartSlice";
 import { RootState } from "../../../redux/store";
 import { IUser } from "../../../types/auth.type";
 import style from "./ReceiverData.module.scss";
+import { useQuery } from '@tanstack/react-query'
+import { productsService } from '../../../services/products.service'
+import { CircularProgress } from '@mui/material'
 
 interface ReceiverDataProps {
   isAccount: boolean;
@@ -12,8 +15,6 @@ interface ReceiverDataProps {
 
 const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
   const dispatch = useDispatch();
-  const [isEmpty, setIsEmpty] = useState<boolean>(true);
-  const { items } = useSelector((state: RootState) => state.cartSlice);
 
   const userData: IUser = JSON.parse(localStorage.getItem("userData") ?? "{}");
   const addressData = JSON.parse(localStorage.getItem("addressData") ?? "{}");
@@ -31,6 +32,11 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
   const [floor, setFloor] = useState(addressData.floor || "");
   const [intercom, setIntercom] = useState(addressData.intercom || "");
 
+  const { data: cartGoods } = useQuery({
+    queryKey: ["cartGoods"],
+    queryFn: () => productsService.getCartGoods(),
+  });
+
   const {
     register,
     handleSubmit,
@@ -41,12 +47,9 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
   const onSubmit = (data: any): void => {
     dispatch(setSuccessData(true));
     reset();
-    console.log("data", data);
   };
 
-  useEffect(() => {
-    setIsEmpty(items.length < 1);
-  }, [items]);
+  
 
   useEffect(() => {
     localStorage.setItem(
@@ -57,20 +60,10 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
         _id: userData?._id || "",
         phone_number: phone,
         favorites: userData?.favorites || [],
-        cart: userData?.cart || [],
-        orders: userData?.orders || [],
         email,
       }),
     );
-  }, [
-    userData?._id,
-    name,
-    phone,
-    email,
-    userData?.favorites,
-    userData?.orders,
-    userData?.cart,
-  ]);
+  }, [name, phone, email, userData?.favorites, userData?._id]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -79,15 +72,12 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
     );
   }, [city, street, flat, entrance, floor, intercom]);
 
+  const cartCount = cartGoods?.cart ?? 0; // Use a fallback value for `cart`
+
   return (
-    <div className={style.usersData__form}>
+    <form   onSubmit={handleSubmit(onSubmit)} className={style.usersData__form}>
       <div className={style.form__top}>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className={style.receiver__info}
-        >
           <p>01. Інформація про отримувача</p>
-        </form>
         <div className={style.top__row}>
           <div className={style.column}>
             <label>Прізвище та ім'я</label>
@@ -97,7 +87,7 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
               })}
               type="text"
               placeholder="Іванов Іван"
-              value={isAccount ? name : ""}
+              defaultValue={isAccount ? name : ""}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -208,10 +198,10 @@ const ReceiverData: React.FC<ReceiverDataProps> = ({ isAccount }) => {
         errors.city ||
         errors.street) && <div>Дані вказано не всі або некоректно</div>}
       <div className={style.empty__error}>
-        {isEmpty ? "Додайте товар, щоб оформити замовлення" : ""}
+        {cartCount < 1 ? "Додайте товар, щоб оформити замовлення" : ""}
       </div>
-      {isAccount ? "" : <button disabled={isEmpty}>Оформити замовлення</button>}
-    </div>
+      {isAccount ? "" : <button disabled={cartCount < 1 ? true : false}>Оформити замовлення</button>}
+    </form>
   );
 };
 
