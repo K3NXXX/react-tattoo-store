@@ -28,6 +28,9 @@ const App: React.FC = () => {
   const jwtToken = localStorage.getItem("jwt");
   const dispatch = useDispatch();
 
+ 
+
+
   useClickOutside(popupRef, () => {
     if (modal) setTimeout(() => dispatch(setModal(false)), 50);
   });
