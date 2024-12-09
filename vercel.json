@@ -1,7 +1,8 @@
 {
 	"rewrites": [
-		{ "source": "/:path*", "destination": "/react-tattoo-store/:path*" }
-	],
+		{ "source": "/react-tattoo-store/:path*", "destination": "/:path*" },
+		{ "source": "/react-tattoo-store", "destination": "/" }
+	  ],
 	"headers": [
 		{
 			"source": "/(.*)",

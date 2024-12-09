@@ -13,7 +13,7 @@ if (rootElem) {
 	root.render(
 		<QueryClientProvider client={queryClient}>
 			<Provider store={store}>
-				<BrowserRouter>
+			<BrowserRouter basename="/react-tattoo-store">
 					<App />
 				</BrowserRouter>
 			</Provider>
