@@ -39,7 +39,6 @@ const Home: React.FC = () => {
         const res = await axios.get(
           `https://tattoo-shop-801cb78430a8.herokuapp.com/products/sort?trend=${searchParams}`,
         );
-        console.debug("res", res.data);
         dispatch(setGoods(res.data));
         dispatch(setIsLoading(false));
         if (searchParams === "new") {

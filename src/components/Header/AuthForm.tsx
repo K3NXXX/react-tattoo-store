@@ -9,9 +9,11 @@ import { authService } from '../../services/auth.service'
 import { IUser } from '../../types/auth.type'
 import style from './Header.module.scss'
 import { RegisterErrors } from './RegisterErrors'
+import { useNavigate } from 'react-router-dom'
 
 const AuthForm: React.FC = () => {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const [activeAuthWay, setActiveAuthWay] = useState('register')
 	const [authWay, setAuthWay] = useState('register')
 	const {
@@ -28,6 +30,7 @@ const AuthForm: React.FC = () => {
 			toast.success('Реєстрація пройшла успішно')
 			dispatch(setIsAuthFormOpened(false))
 			localStorage.setItem('userData', JSON.stringify(data))
+			navigate('/react-tattoo-store/account')
 			reset()
 		},
 		onError(error: any) {
@@ -42,6 +45,7 @@ const AuthForm: React.FC = () => {
 			toast.success('Авторизація пройшла успішно')
 			dispatch(setIsAuthFormOpened(false))
 			localStorage.setItem('userData', JSON.stringify(data))
+			navigate('/react-tattoo-store/account')
 			reset()
 		},
 		onError(error: any) {
