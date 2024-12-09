@@ -1,0 +1,15 @@
+.root {
+	background-color: white;
+	padding: 15px;
+	width: 700px;
+	border-bottom: 1px solid #bb8c5f;
+	display: flex;
+	align-items: center;
+	gap: 0 30px;
+	color: black;
+
+	img {
+		width: 70px;
+		border-radius: 10px;
+	}
+}

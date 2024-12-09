@@ -264,6 +264,18 @@
 		left: 8px;
 	}
 }
+
+.search__wrapper {
+	position: relative;
+	.search__list {
+		position: absolute;
+		top: 50px;
+		left: 0;
+		height: 500px;
+		z-index: 100;
+		overflow: hidden;
+	}
+}
 .search__input {
 	background-color: transparent;
 	border: 1px solid #524336;

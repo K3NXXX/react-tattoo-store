@@ -52,7 +52,7 @@ const Category: React.FC<CategoryProps> = ({
 				<CategoryCarousel />
 			</div>
 			{showMore === 4 ? (
-				<button onClick={() => setShowMore(10)} className={style.moreBtn}>
+				<button onClick={() => setShowMore(8)} className={style.moreBtn}>
 					Показати більше
 				</button>
 			) : (

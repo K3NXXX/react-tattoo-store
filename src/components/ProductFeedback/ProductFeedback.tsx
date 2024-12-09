@@ -37,7 +37,7 @@ const ProductFeedback: React.FC<IFeedbackProps> = ({
 			onClose()
 		},
 		onError: () => {
-			toast.error('Сталася помилка. Повторіть знову')
+			toast.error('Ви вже робили вігдук на цей товар')
 		},
 	})
 

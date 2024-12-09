@@ -10,7 +10,7 @@ class ProductsService {
 		'https://tattoo-shop-801cb78430a8.herokuapp.com/user/favorites'
 
 	async create(formData: IProduct) {
-		const { data } = await axios.post<IProduct>(`${this.BASE_URL}`, formData)
+		const { data } = await axios.post<IProduct>(`${this.BASE_URL}/add`, formData)
 
 		return data
 	}
