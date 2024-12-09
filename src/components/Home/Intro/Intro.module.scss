@@ -3,6 +3,8 @@
     background-repeat: no-repeat;
     background-size: contain;
     transition-duration: 0.4s;
+    position: relative;
+    top: -2px;
     @media(max-width:1524px) {
             background-size: cover;
     }

@@ -1,0 +1,35 @@
+.root {
+	.title {
+		color: rgb(62, 66, 75);
+		font-family: Jost, sans-serif;
+		font-size: 25px;
+		font-weight: 700;
+		margin-bottom: 30px;
+		@media (max-width: 400px) {
+			font-size: 20px;
+		}
+	}
+	.list {
+		display: grid;
+		grid-template-columns: repeat(4,289px);
+		gap: 0 30px;
+		@media (max-width: 1330px) {
+			grid-template-columns: repeat(3,289px);
+			justify-content: center;
+			gap: 30px;
+		}
+		@media (max-width: 970px) {
+			grid-template-columns: repeat(2,289px);
+		}
+		@media (max-width: 660px) {
+			grid-template-columns: repeat(1,289px);
+		}
+		.item {
+			padding: 20px;
+			background-color: rgb(180, 180, 180);
+			img {
+				width: 200px;
+			}
+		}
+	}
+}

@@ -6,6 +6,9 @@
 	max-width: 1246px;
 	margin: 0 auto;
 	padding: 0 15px;
+	@media (max-width:1245px) {
+		padding: 6px 15px;
+	}
 	.top {
 		display: flex;
 		justify-content: space-between;
@@ -107,6 +110,46 @@
 		line-height: 150%;
 		letter-spacing: 3.5px;
 		text-transform: uppercase;
+	}
+}
+
+.logo__mobile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	.logo__name {
+		color: #bb8c5f;
+		font-family: Forum, sans-serif;
+		font-size: 30px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 130%;
+		text-transform: uppercase;
+		position: relative;
+		top: 5px;
+		@media (max-width: 600px) {
+			font-size: 17px;
+			margin-bottom: 3px;
+
+		}
+	}
+	.header__logo_line {
+		@media (max-width: 600px) {
+			display: none;
+		}
+	}
+	span {
+		color: var(--txt-orange, #bb8c5f);
+		font-family: Jost, sans-serif;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 300;
+		line-height: 150%;
+		letter-spacing: 3.5px;
+		text-transform: uppercase;
+		@media (max-width: 600px) {
+			font-size: 14px;
+		}
 	}
 }
 
@@ -614,9 +657,7 @@
 }
 @media (max-width: 410px) {
 	.right {
-		a {
-			display: none;
-		}
+	
 		.accountLink {
 			display: inline-block;
 		}

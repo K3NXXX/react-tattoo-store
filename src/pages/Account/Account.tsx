@@ -6,6 +6,7 @@ import { IUser } from "../../types/auth.type";
 import CartGoods from "../Cart/CartGoods/CartGoods";
 import ReceiverData from "../Cart/ReceiverData/ReceiverData";
 import style from "./Account.module.scss";
+import OrdersHistory from '../../components/OrdersHistory/OrdersHistory'
 
 const Account: React.FC = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Account: React.FC = () => {
     window.location.reload();
     authService.logout();
   };
+
 
   return (
     <section className={style.wrapper}>
@@ -79,8 +81,7 @@ const Account: React.FC = () => {
         </div>
         </div>
         <ReceiverData isAccount={true} />
-        <p className={style.cart}>Товари в корзині</p>
-        <CartGoods />
+        <OrdersHistory/>
       </div>
     </section>
   );

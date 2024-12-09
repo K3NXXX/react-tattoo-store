@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
@@ -22,6 +22,7 @@ import Favorites from "./pages/Favorites/Favorites";
 import style from "../src/scss/global.module.scss";
 
 const App: React.FC = () => {
+  const location = useLocation()
   const modal = useSelector((state: RootState) => state.categorySlice.modal);
   const popupRef = useRef<HTMLDivElement>(null);
   const jwtToken = localStorage.getItem("jwt");
@@ -36,6 +37,10 @@ const App: React.FC = () => {
       authService.getMe();
     }
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [location])
 
   return (
     <div className={style.App}>

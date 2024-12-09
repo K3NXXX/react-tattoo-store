@@ -1,157 +1,166 @@
-.categoryCard {
-  user-select: none;
-  height: auto;
-  padding: 0 0 30px 0;
-  background: #f5f5f5;
-  border-radius: 5px;
-  display: inline-block;
-  position: relative;
-  transition: all 0.3s ease;
-  cursor: pointer;
 
-  &:hover {
-    transform: scale(1.1);
-    padding: 0 0 70px 0;
-    z-index: 1;
-  }
+.categoryCard {
+	user-select: none;
+	min-height: 470px;
+	padding: 0 0 30px 0;
+	background: #f5f5f5;
+	border-radius: 5px;
+	display: inline-block;
+	position: relative;
+	transition: all 0.3s ease;
+	cursor: pointer;
+
+	&:hover {
+		transform: scale(1.1);
+		padding: 0 0 70px 0;
+		z-index: 1;
+	}
 }
 
 .favoriteIcon {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 3;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	z-index: 3;
 }
 
 .new {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background-image: url("../../../public/categoryGoods/new.svg");
-  width: 85px;
-  height: 29px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  color: #bb8c5f;
-  font-family: Jost, sans-serif;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 130%;
-  padding: 4px 18px 6px 10px;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	background-image: url('../../../public/categoryGoods/new.svg');
+	width: 85px;
+	height: 29px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: #bb8c5f;
+	font-family: Jost, sans-serif;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 130%;
+	padding: 4px 18px 6px 10px;
 }
 
 .bg {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 228px;
-  width: 289px;
-  margin-bottom: 22px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 228px;
+	width: 289px;
+	margin-bottom: 22px;
 }
 .card__info {
-  padding: 0 30px;
-  .info__name {
-    color: #3e424b;
-    font-family: Jost, sans-serif;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-    max-width: 229px;
-    margin-bottom: 10px;
-    min-height: 52px;
-    text-align: start;
-  }
-  .info__price {
-    color: #bb8c5f;
-    font-family: Jost, sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 130%;
-    margin-bottom: 20px;
-    text-align: start;
-  }
-  .span__add {
-    display: block;
-    text-align: center;
-    color: #bb8c5f;
-    font-family: Jost, sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    cursor: pointer;
-    background-image: url("../../../public/categoryGoods/add-icon.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    max-width: 259px;
-    max-height: 50px;
-    padding: 8px 42px 12px;
-    opacity: 1;
-    transition: opacity 0.5s;
-    position: absolute;
-    transition-duration: 0.3s;
-    user-select: none;
+	padding: 0 30px;
+	.info__name {
+		color: #3e424b;
+		font-family: Jost, sans-serif;
+		font-size: 17px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 140%;
+		max-width: 229px;
+		margin-bottom: 10px;
+		min-height: 52px;
+		text-align: start;
+	}
+	.rating__loading {
+		min-height: 24px;
+		color: #bb8c5f;
+	}
 
-    &:hover {
-      opacity: 0.7;
-    }
-  }
+	.rating__wrapper {
+		text-align: start;
+	}
+	.info__price {
+		color: #bb8c5f;
+		font-family: Jost, sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 130%;
+		margin-bottom: 20px;
+		text-align: start;
+	}
+	.span__add {
+		display: block;
+		text-align: center;
+		color: #bb8c5f;
+		font-family: Jost, sans-serif;
+		font-size: 20px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 150%;
+		cursor: pointer;
+		background-image: url('../../../public/categoryGoods/add-icon.svg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		max-width: 259px;
+		max-height: 50px;
+		padding: 8px 42px 12px;
+		opacity: 1;
+		transition: opacity 0.5s;
+		position: absolute;
+		transition-duration: 0.3s;
+		user-select: none;
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
 }
 .binClicked {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0 26px;
-  & > svg:first-child,
-  > :last-child {
-    border: 1.5px solid var(--orange, #bb8c5f);
-    padding: 13px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-  }
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0 26px;
+	& > svg:first-child,
+	> :last-child {
+		border: 1.5px solid var(--orange, #bb8c5f);
+		padding: 13px;
+		width: 50px;
+		height: 50px;
+		cursor: pointer;
+	}
 }
 .binClickedCount {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  & span:first-child {
-    color: #3e424b;
-    text-align: center;
-    font-family: Jost, sans-serif;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 100%;
-  }
-  & span:last-child {
-    color: #d0d0d0;
-    text-align: center;
-    font-family: Jost, sans-serif;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%;
-  }
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	& span:first-child {
+		color: #3e424b;
+		text-align: center;
+		font-family: Jost, sans-serif;
+		font-size: 17px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 100%;
+	}
+	& span:last-child {
+		color: #d0d0d0;
+		text-align: center;
+		font-family: Jost, sans-serif;
+		font-size: 17px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 130%;
+	}
 }
 .categoryCard__phone {
-  display: none;
+	display: none;
 }
 @media (max-width: 1248px) {
-  .categoryCard {
-    display: none;
-  }
-  .categoryCard__phone {
-    display: inline-block;
-    height: 440px;
-    padding: 0 0 30px 0;
-    background: #f5f5f5;
-    position: relative;
-    transition: all 0.3s ease;
-  }
+	.categoryCard {
+		display: none;
+	}
+	.categoryCard__phone {
+		display: inline-block;
+		height: 470px;
+		padding: 0 0 30px 0;
+		background: #f5f5f5;
+		position: relative;
+		transition: all 0.3s ease;
+	}
 }
