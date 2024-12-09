@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import style from "./Brands.module.scss"
 import 'swiper/css';
 import 'swiper/css/navigation';
+
 const Brands: React.FC = () => {
     const [slidesPerView, setSlidesPerView] = useState<number>(5)
     const [showMore, setShowMore] = useState<boolean>(false)

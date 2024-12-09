@@ -47,23 +47,23 @@ const HeaderTop: React.FC = () => {
 			<div className={style.top}>
 				<div className={style.left}>
 					<div className={style.menu}>
-          <Link to='/react-tattoo-store' className={style.logo__mobile}>
-						<span className={style.logo__name}>mr. driskell</span>
-						<svg
-            className={style.header__logo_line}
-							xmlns='http://www.w3.org/2000/svg'
-							width='192'
-							height='6'
-							viewBox='0 0 192 6'
-							fill='none'
-						>
-							<path
-								d='M0.113249 3.00002L3 5.88677L5.88675 3.00002L3 0.113264L0.113249 3.00002ZM191.887 3L189 0.113248L186.113 3L189 5.88675L191.887 3ZM3 3.50002L189 3.5L189 2.5L3 2.50002L3 3.50002Z'
-								fill='#BB8C5F'
-							/>
-						</svg>
-						<span>Tattoo shop</span>
-					</Link>
+						<Link to='/react-tattoo-store' className={style.logo__mobile}>
+							<span className={style.logo__name}>mr. driskell</span>
+							<svg
+								className={style.header__logo_line}
+								xmlns='http://www.w3.org/2000/svg'
+								width='192'
+								height='6'
+								viewBox='0 0 192 6'
+								fill='none'
+							>
+								<path
+									d='M0.113249 3.00002L3 5.88677L5.88675 3.00002L3 0.113264L0.113249 3.00002ZM191.887 3L189 0.113248L186.113 3L189 5.88675L191.887 3ZM3 3.50002L189 3.5L189 2.5L3 2.50002L3 3.50002Z'
+									fill='#BB8C5F'
+								/>
+							</svg>
+							<span>Tattoo shop</span>
+						</Link>
 					</div>
 
 					<div className={style.contacts}>

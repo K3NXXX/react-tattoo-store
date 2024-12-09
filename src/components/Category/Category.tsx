@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { CategoryItem } from '../../redux/slices/categorySlice'
+import { RootState } from '../../redux/store'
 import Skeleton from '../Skeleton/Skeleton'
 import style from './Category.module.scss'
 import CategoryCard from './CategoryCard'
 import CategoryCarousel from './CategoryCarousel'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/store'
 
 type CategoryProps = {
 	activeCategory: number
@@ -17,8 +17,10 @@ const Category: React.FC<CategoryProps> = ({
 }) => {
 	const [showMore, setShowMore] = useState<number>(4)
 	const skeleton = [...new Array(4)].map((_, index) => <Skeleton key={index} />)
-	const {goods, isLoading} = useSelector((state:RootState) => state.categorySlice)
-	
+	const { goods, isLoading } = useSelector(
+		(state: RootState) => state.categorySlice
+	)
+
 	const categoryList = ['Нові товари', 'Хіти продаж', 'Найпопулярніші']
 	const categoryListRef = useRef<HTMLUListElement>(null)
 

@@ -1,17 +1,17 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-scroll'
 import bg1 from '../../../assets/img/intro-bg1.png'
 import bg2 from '../../../assets/img/intro-bg2.png'
 import bg3 from '../../../assets/img/intro-bg3.png'
 import upBtn from '../../../assets/img/intro-slider-btn.svg'
 import downBtn from '../../../assets/img/intro-slider-btn2.svg'
-import style from './Intro.module.scss'
-import PurchaseModal from '../../PurchaseModal/PurchaseModal'
-import { useSelector } from 'react-redux'
 import { RootState } from '../../../redux/store'
+import PurchaseModal from '../../PurchaseModal/PurchaseModal'
+import style from './Intro.module.scss'
 
 const Intro: React.FC = () => {
-    const modal = useSelector((state:RootState) => state.categorySlice.modal)
+	const modal = useSelector((state: RootState) => state.categorySlice.modal)
 	const spanList = ['', '', '']
 	let [carousel, setCarousel] = useState<number>(1)
 	const increaseIndexCarousel = (): void => {
@@ -88,9 +88,7 @@ const Intro: React.FC = () => {
 					)
 				})}
 			</div>
-            {modal && (
-                <PurchaseModal/>
-            )}
+			{modal && <PurchaseModal />}
 		</div>
 	)
 }

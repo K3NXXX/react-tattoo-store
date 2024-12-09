@@ -6,7 +6,7 @@
 	max-width: 1246px;
 	margin: 0 auto;
 	padding: 0 15px;
-	@media (max-width:1245px) {
+	@media (max-width: 1245px) {
 		padding: 6px 15px;
 	}
 	.top {
@@ -130,7 +130,6 @@
 		@media (max-width: 600px) {
 			font-size: 17px;
 			margin-bottom: 3px;
-
 		}
 	}
 	.header__logo_line {
@@ -158,8 +157,8 @@
 	top: -10px;
 	right: -10px;
 
-	color: #FAF6F2;
-	background-color: #BB8C5F;
+	color: #faf6f2;
+	background-color: #bb8c5f;
 	padding: 1px 5px;
 }
 
@@ -410,7 +409,7 @@
 
 		.active {
 			color: #bb8c5f;
-            font-family: Roboto, sans-serif;
+			font-family: Roboto, sans-serif;
 			font-size: 24px;
 			font-style: normal;
 			font-weight: 500;
@@ -418,7 +417,7 @@
 			cursor: pointer;
 			transition: 0.3s ease;
 
-            &:hover {
+			&:hover {
 				opacity: 0.7;
 			}
 			@media (max-width: 438px) {
@@ -669,7 +668,6 @@
 }
 @media (max-width: 410px) {
 	.right {
-	
 		.accountLink {
 			display: inline-block;
 		}

@@ -9,8 +9,7 @@ import style from './Header.module.scss'
 const HeaderBottom: React.FC = () => {
 	const listRef = useRef<HTMLDivElement | null>(null)
 	const [expandCatalog, setExpandCatalog] = useState<boolean>(false)
-	const [value, setValue] = useState("")
-	console.log("val", value)
+	const [value, setValue] = useState('')
 
 	const catalog = [
 		'Набори для тату',
@@ -74,7 +73,7 @@ const HeaderBottom: React.FC = () => {
 				<div className={style.search__wrapper}>
 					<div className={style.search}>
 						<input
-						value={value}
+							value={value}
 							onChange={e => setValue(e.target.value)}
 							className={style.search__input}
 							type='text'
@@ -108,7 +107,9 @@ const HeaderBottom: React.FC = () => {
 					</div>
 					<ul className={style.search__list}>
 						{value && value.length > 2
-							? filteredItems?.map(item => <SearchItem setValue={setValue} item={item} />)
+							? filteredItems?.map(item => (
+									<SearchItem setValue={setValue} item={item} />
+							  ))
 							: ''}
 					</ul>
 				</div>

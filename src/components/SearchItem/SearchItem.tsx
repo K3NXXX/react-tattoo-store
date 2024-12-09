@@ -5,12 +5,15 @@ import styles from './SearchItem.module.scss'
 
 interface ISearchItempProps {
 	item: IProduct
-	setValue: (value:string) => void
+	setValue: (value: string) => void
 }
 
 const SearchItem: React.FC<ISearchItempProps> = ({ item, setValue }) => {
 	return (
-		<Link onClick={() => setValue("")} to={`/react-tattoo-store/product/${item._id}`}>
+		<Link
+			onClick={() => setValue('')}
+			to={`/react-tattoo-store/product/${item._id}`}
+		>
 			<div className={styles.root}>
 				<img src={item.image} alt='product' />
 				<p>{item.name}</p>

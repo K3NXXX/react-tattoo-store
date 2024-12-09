@@ -11,18 +11,18 @@
 	}
 	.list {
 		display: grid;
-		grid-template-columns: repeat(4,289px);
+		grid-template-columns: repeat(4, 289px);
 		gap: 0 30px;
 		@media (max-width: 1330px) {
-			grid-template-columns: repeat(3,289px);
+			grid-template-columns: repeat(3, 289px);
 			justify-content: center;
 			gap: 30px;
 		}
 		@media (max-width: 970px) {
-			grid-template-columns: repeat(2,289px);
+			grid-template-columns: repeat(2, 289px);
 		}
 		@media (max-width: 660px) {
-			grid-template-columns: repeat(1,289px);
+			grid-template-columns: repeat(1, 289px);
 		}
 		.item {
 			padding: 20px;

@@ -1,22 +1,15 @@
-import { useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import modalImage from '../../assets/img/Catalog/modal-image.jpg'
-import { useClickOutside } from '../../hooks/useClickOutside'
 import { setModal } from '../../redux/slices/categorySlice'
-import { RootState } from '../../redux/store'
 import style from './PurchaseModal.module.scss'
 
 const PurchaseModal: React.FC = () => {
-	const modal = useSelector((state: RootState) => state.categorySlice.modal)
 	const dispatch = useDispatch()
 
 	return (
 		<div className={style.popup_bg}>
-			<div
-				className={style.popup}
-				
-			>
+			<div className={style.popup}>
 				<p className={style.added}>Товар додано в корзину</p>
 				<img
 					className={style.popup__image}

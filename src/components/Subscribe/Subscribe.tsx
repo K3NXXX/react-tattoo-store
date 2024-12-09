@@ -21,10 +21,9 @@ const Subscribe: React.FC = () => {
 				<p>Дізнавайтеся першими</p>
 				<p>Зареєструйтеся, щоб знати про новини та акції</p>
 				{jwt ? (
-                    
 					<Link to={'/react-tattoo-store/account'}>
-                        <button>Зареєструватися</button>
-                    </Link>
+						<button>Зареєструватися</button>
+					</Link>
 				) : (
 					<button
 						onClick={() => dispatch(setIsAuthFormOpened(true))}
