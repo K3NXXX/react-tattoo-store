@@ -1,4 +1,4 @@
-import { IUser} from '../types/auth.type'
+import { IUser } from '../types/auth.type'
 import { IUserData } from '../types/order.type'
 import axios from '../utils/axios'
 
@@ -48,12 +48,11 @@ class AuthService {
 
 	async updateData(userData: IUserData, userId: string) {
 		try {
-			const {data} = await axios.put(`/user/${userId}`, userData)
-			localStorage.setItem("userDataOrder", JSON.stringify(data))
+			const { data } = await axios.put(`/user/${userId}`, userData)
+			localStorage.setItem('userDataOrder', JSON.stringify(data))
 			return data
 		} catch (error) {
-			console.log(error);
-
+			console.log(error)
 		}
 	}
 }

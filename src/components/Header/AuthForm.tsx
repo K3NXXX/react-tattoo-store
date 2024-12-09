@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { setIsAuthFormOpened } from '../../redux/slices/globalSlice'
 import { authService } from '../../services/auth.service'
-import {IUser} from '../../types/auth.type'
+import { IUser } from '../../types/auth.type'
 import style from './Header.module.scss'
 import { RegisterErrors } from './RegisterErrors'
 
@@ -27,7 +27,7 @@ const AuthForm: React.FC = () => {
 		onSuccess(data) {
 			toast.success('Реєстрація пройшла успішно')
 			dispatch(setIsAuthFormOpened(false))
-			localStorage.setItem("userData", JSON.stringify(data))
+			localStorage.setItem('userData', JSON.stringify(data))
 			reset()
 		},
 		onError(error: any) {
@@ -41,13 +41,13 @@ const AuthForm: React.FC = () => {
 		onSuccess(data) {
 			toast.success('Авторизація пройшла успішно')
 			dispatch(setIsAuthFormOpened(false))
-			localStorage.setItem("userData", JSON.stringify(data))
+			localStorage.setItem('userData', JSON.stringify(data))
 			reset()
 		},
 		onError(error: any) {
-			const errorMessage = error?.response?.data?.error || 'Сталася помилка';
-			toast.error(errorMessage);
-		}
+			const errorMessage = error?.response?.data?.error || 'Сталася помилка'
+			toast.error(errorMessage)
+		},
 	})
 
 	const onSubmit = (data: IUser) => {

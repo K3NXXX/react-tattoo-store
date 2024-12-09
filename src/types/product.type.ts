@@ -8,4 +8,11 @@ export interface IProduct {
   trending: string;
   rating: number;
   image: string;
+  type: string
+}
+
+export interface IChangeRating {
+  userId: any
+  rating: number | null
+  productId: string | null
 }

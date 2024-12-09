@@ -6,6 +6,9 @@
 	max-width: 1246px;
 	margin: 0 auto;
 	padding: 0 15px;
+	@media (max-width: 1245px) {
+		padding: 6px 15px;
+	}
 	.top {
 		display: flex;
 		justify-content: space-between;
@@ -110,13 +113,52 @@
 	}
 }
 
+.logo__mobile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	.logo__name {
+		color: #bb8c5f;
+		font-family: Forum, sans-serif;
+		font-size: 30px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 130%;
+		text-transform: uppercase;
+		position: relative;
+		top: 5px;
+		@media (max-width: 600px) {
+			font-size: 17px;
+			margin-bottom: 3px;
+		}
+	}
+	.header__logo_line {
+		@media (max-width: 600px) {
+			display: none;
+		}
+	}
+	span {
+		color: var(--txt-orange, #bb8c5f);
+		font-family: Jost, sans-serif;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 300;
+		line-height: 150%;
+		letter-spacing: 3.5px;
+		text-transform: uppercase;
+		@media (max-width: 600px) {
+			font-size: 14px;
+		}
+	}
+}
+
 .count {
 	position: absolute;
 	top: -10px;
 	right: -10px;
 
-	color: #FAF6F2;
-	background-color: #BB8C5F;
+	color: #faf6f2;
+	background-color: #bb8c5f;
 	padding: 1px 5px;
 }
 
@@ -219,6 +261,18 @@
 		position: absolute;
 		top: 4px;
 		left: 8px;
+	}
+}
+
+.search__wrapper {
+	position: relative;
+	.search__list {
+		position: absolute;
+		top: 50px;
+		left: 0;
+		height: 500px;
+		z-index: 100;
+		overflow: hidden;
 	}
 }
 .search__input {
@@ -355,7 +409,7 @@
 
 		.active {
 			color: #bb8c5f;
-            font-family: Roboto, sans-serif;
+			font-family: Roboto, sans-serif;
 			font-size: 24px;
 			font-style: normal;
 			font-weight: 500;
@@ -363,7 +417,7 @@
 			cursor: pointer;
 			transition: 0.3s ease;
 
-            &:hover {
+			&:hover {
 				opacity: 0.7;
 			}
 			@media (max-width: 438px) {
@@ -614,9 +668,6 @@
 }
 @media (max-width: 410px) {
 	.right {
-		a {
-			display: none;
-		}
 		.accountLink {
 			display: inline-block;
 		}

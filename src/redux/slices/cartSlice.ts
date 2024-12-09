@@ -60,8 +60,13 @@ const cartSlice = createSlice({
     setSuccessData(state, action) {
       state.successData = action.payload;
     },
+
+    setRemoveCartData(state) {
+      state.items = []
+      state.totalPrice = 0; 
+    }
   },
 });
-export const { addItems, removeItems, minusItems, setSuccessData } =
+export const { addItems, removeItems, minusItems, setSuccessData, setRemoveCartData } =
   cartSlice.actions;
 export default cartSlice.reducer;

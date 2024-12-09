@@ -39,7 +39,6 @@ const UserDataForm: React.FC<IUserDataFormProps> = ({ isAccount }) => {
 
 	const onSubmit = (data: IUserData) => {
 		mutate(data)
-		console.log('editdata', data)
 	}
 
 	return (
@@ -96,7 +95,11 @@ const UserDataForm: React.FC<IUserDataFormProps> = ({ isAccount }) => {
 							})}
 							type='text'
 							placeholder='+380555353535'
-							defaultValue={userDataOrder ? userDataOrder.phone_number : userData.phone_number}
+							defaultValue={
+								userDataOrder
+									? userDataOrder.phone_number
+									: userData.phone_number
+							}
 							disabled={isEditUserData}
 						/>
 					</div>
@@ -116,7 +119,9 @@ const UserDataForm: React.FC<IUserDataFormProps> = ({ isAccount }) => {
 							})}
 							type='text'
 							placeholder='Ivanov2021@gmail.com'
-							defaultValue={userDataOrder ? userDataOrder.email : userData.email}
+							defaultValue={
+								userDataOrder ? userDataOrder.email : userData.email
+							}
 							disabled={isEditUserData}
 						/>
 					</div>
