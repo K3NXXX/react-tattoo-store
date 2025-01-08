@@ -367,6 +367,9 @@
 		padding: 50px 10px 20px 10px;
 		height: 580px;
 	}
+	@media (max-width: 380px) {
+		width: 320px;
+	}
 
 	.close {
 		max-width: 30px;
