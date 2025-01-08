@@ -30,8 +30,8 @@ export const catalogListTablet: catalogListType[] = [
 	{
 		id: 4,
 		image: img4,
-		description: 'Педалі та провода',
-		url: 'педалі-та-провода',
+		description: 'Педалі та проводи',
+		url: 'педалі-та-проводи',
 		filterName: 'pedals',
 	},
 	{
