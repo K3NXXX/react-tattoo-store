@@ -363,7 +363,7 @@
 		width: 400px;
 	}
 	@media (max-width: 438px) {
-		width: 300px;
+		width: 350px;
 		padding: 50px 10px 20px 10px;
 		height: 580px;
 	}
@@ -389,6 +389,11 @@
 			gap: 10px 0;
 			margin-bottom: 10px;
 		}
+		.authIcon {
+			@media (max-width:438px) {
+				display: none;
+			}
+		}
 		.authWay {
 			color: #494343;
 			font-family: Roboto, sans-serif;
@@ -401,9 +406,11 @@
 
 			&:hover {
 				opacity: 0.7;
+				font-size: 20px;
+
 			}
 			@media (max-width: 438px) {
-				font-size: 18px;
+				font-size: 23px;
 			}
 		}
 
@@ -421,7 +428,7 @@
 				opacity: 0.7;
 			}
 			@media (max-width: 438px) {
-				font-size: 18px;
+				font-size: 23px;
 			}
 		}
 	}

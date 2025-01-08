@@ -85,7 +85,7 @@ const AuthForm: React.FC = () => {
 					>
 						Реєстрація
 					</span>
-					<IoArrowDownCircle color='#BB8C5F' size={30} />
+					<IoArrowDownCircle className={style.authIcon} color='#BB8C5F' size={30} />
 					<span
 						className={activeAuthWay === 'login' ? style.active : style.authWay}
 						onClick={() => handleClickAuthWay('login')}
